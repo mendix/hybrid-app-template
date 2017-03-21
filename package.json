@@ -1,6 +1,6 @@
 {
   "name": "mendix-hybrid-app-template",
-  "version": "0.0.1",
+  "version": "v0.0.1",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "install": "webpack",
@@ -34,6 +34,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "gitlab@gitlab.srv.hq.mendix.net:mobile-experience/hybrid-app-template.git"
+    "url": "git@github.com:mendix/hybrid-app-template.git"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Kevin Vlaanderen",
+    "email": "kevin.vlaanderen@mendix.com",
+    "url": "https://developer.mendixcloud.com/link/profile/15218"
   }
 }
