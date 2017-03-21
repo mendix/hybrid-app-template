@@ -1,3 +1,7 @@
+***This repository is under active development, and should not be used at this moment***
+
+---
+
 # Mendix PhoneGap Build app template
 
 Mendix apps can simply be viewed in mobile web browsers.
