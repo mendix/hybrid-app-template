@@ -1,0 +1,32 @@
+{
+  "name": "hybrid-app-template",
+  "version": "0.0.1",
+  "description": "Mendix PhoneGap Build app template",
+  "scripts": {
+    "install": "webpack",
+    "package": "webpack",
+    "watch": "webpack --watch",
+    "build-android": "cd build && phonegap build android",
+    "build-ios": "cd build && phonegap build ios",
+    "run-android": "cd build && phonegap run android",
+    "run-ios": "cd build && phonegap run ios",
+    "phonegap-login": "cd build && phonegap remote login",
+    "phonegap-logout": "cd build && phonegap remote logout",
+    "remote-run-android": "cd build && phonegap remote run android",
+    "remote-run-ios": "cd build && phonegap remote run ios"
+  },
+  "main": "src/www/scripts/entry.js",
+  "directories": {
+    "lib": "src"
+  },
+  "dependencies": {
+    "hybrid-app-base": "^0.0.1"
+  },
+  "devDependencies": {
+    "webpack-merge": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab@gitlab.srv.hq.mendix.net:mobile-experience/hybrid-app-template.git"
+  }
+}
