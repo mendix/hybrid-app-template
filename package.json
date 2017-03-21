@@ -1,5 +1,5 @@
 {
-  "name": "hybrid-app-template",
+  "name": "mendix-hybrid-app-template",
   "version": "0.0.1",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
@@ -19,8 +19,15 @@
   "directories": {
     "lib": "src"
   },
+  "files": [
+    "config",
+    "src",
+    "*.js",
+    "yarn.lock",
+    "README.md"
+  ],
   "dependencies": {
-    "hybrid-app-base": "^0.0.1"
+    "mendix-hybrid-app-base": "^0.0.1"
   },
   "devDependencies": {
     "webpack-merge": "^4.0.0"
