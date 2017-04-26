@@ -1,19 +1,20 @@
 {
   "name": "mendix-hybrid-app-template",
-  "version": "v0.0.1",
+  "version": "v1.0.0",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
-    "install": "webpack",
+    "init": "node init",
+    "install": "node init && webpack",
     "package": "webpack",
     "watch": "webpack --watch",
-    "build-android": "cd build && phonegap build android",
-    "build-ios": "cd build && phonegap build ios",
-    "run-android": "cd build && phonegap run android",
-    "run-ios": "cd build && phonegap run ios",
+    "android": "cd build && phonegap run android",
+    "android-build": "cd build && phonegap build android",
+    "android-remote": "cd build && phonegap remote run android",
+    "ios": "cd build && phonegap run ios",
+    "ios-build": "cd build && phonegap build ios",
+    "ios-remote": "cd build && phonegap remote run ios",
     "phonegap-login": "cd build && phonegap remote login",
-    "phonegap-logout": "cd build && phonegap remote logout",
-    "remote-run-android": "cd build && phonegap remote run android",
-    "remote-run-ios": "cd build && phonegap remote run ios"
+    "phonegap-logout": "cd build && phonegap remote logout"
   },
   "main": "src/www/scripts/entry.js",
   "directories": {
@@ -27,9 +28,12 @@
     "README.md"
   ],
   "dependencies": {
-    "mendix-hybrid-app-base": "^0.0.1"
+    "mendix-hybrid-app-base": "^1.0.0"
   },
   "devDependencies": {
+    "phonegap": "^6.4.8",
+    "shelljs": "^0.7.7",
+    "webpack": "^2.2.1",
     "webpack-merge": "^4.0.0"
   },
   "repository": {
