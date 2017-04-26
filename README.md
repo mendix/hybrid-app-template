@@ -6,13 +6,13 @@
 
 Mendix apps can simply be viewed in mobile web browsers.
 However, some features of mobile devices cannot be accessed through HTML and Javascript.
-Also, if you want to publish your app on the Apple App Store, Google Play or Microsoft Phone Store, you have to wrap your app in a native shell.
-We use PhoneGap to do this.
-PhoneGap creates a native wrapper around a web application and provides access to native functions through a Javascript API.
+Also, if you want to publish your app on the Apple App Store, Google Play or Microsoft Phone Store  true in general, but our particular case does not support microsoft phone store, so I would remove any reference to Microsoft's Platform, you have to wrap your app in a native shell.
+We use PhoneGap to do this. Add link to phonegap
+PhoneGap creates a native wrapper around a web application and provides access to native functions functionality through a Javascript API.
 These apps are also called _hybrid_ apps because they are a hybrid of a web and a native app.
 
 This project contains the Mendix PhoneGap Build app template.
-It can be used to customize your mobile Mendix app, debug the app using emulators, and build installable packages of your app, either locally or using Phonegap Build.
+It can be used to customize your mobile Mendix app, debug the app using emulators, and build installable packages of your app, either locally or in the cloud using Phonegap Build link to phonegap build.
 By using this template, you can easily adapt many facets of your app, like styling, icons, splash screens, and the login screen.
 
 ## Prerequisites
@@ -42,7 +42,8 @@ In order to create deployment packages locally (instead of with Phonegap Build) 
 
 For Android, the easiest approach is to install [Android Studio](https://developer.android.com/studio/index.html).
 You can find installation instructions for each platform (Windows/Mac/Linux) [here](https://developer.android.com/studio/install.html).
-  
+which SDK level do I need to install? Or is that out of scope?
+
 #### iOS
 
 For build iOS packages locally and for running your app on an iOS emulator, you are required to use an Apple device (MacBook / iMac), with Xcode installed. You can install Xcode through iTunes.
@@ -50,9 +51,10 @@ For build iOS packages locally and for running your app on an iOS emulator, you 
 ## Folder Structure
 
 The project structure consists of the following elements:
+where does this structure originate from? how does it compare to any structure imposed by Cordova?
 
 - **/src**: this is where you place all customizations for your app
-    - **/www**: 
+    - **/www**:
         - **/images**: any images that you'd like to use on e.g. the login screen
         - **/styles**: styling for e.g. the login screen, in the form of css files
         - **/scripts**: javascript files that customize the behavior of your app
@@ -77,7 +79,7 @@ You can trigger a build by executing `npm run package` from the root folder of y
 The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the NodeJS executable).
 
 - **target=[d|t|a|p]**: Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=t` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
-- **[x86|arm]**: Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.
+- **[x86|arm]**: Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs. Can I also build universal x86/arm binaries?
 
 ## Building your app with Phonegap Build
 
@@ -85,7 +87,7 @@ After creating a build package, you can build installation packages using Phoneg
 In order to do so, you'll need a Phonegap Build account.
 You can create one [here](https://build.phonegap.com/).
 
-Once you have an account, you can either upload the produced .zip file manually, or trigger the process from the command line.
+Once you have an account, you can either upload the produced .zip file manually, or trigger the process from the command line:
 
 ### From the command line
 
@@ -157,7 +159,7 @@ In case you have downloaded this package through the Mendix portal, all icons an
 ### Client behavior (advanced)
 
 The Mendix hybrid app is primarily a shell, that loads you Mendix hybrid application in a webview.
-The shell itself does not contain a lot of custom code.
+The shell itself does not contain a lot of custom code what does custom code mean in this context?.
 However, there is some code to properly handle several mobile and Mendix specific features, such as the back button behavior on Android, and the preparation of files for running in Offline mode.
 
 Most of this code is implemented as part of the mendix-hybrid-app-base package, and cannot easily be overridden.
