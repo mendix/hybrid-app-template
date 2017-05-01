@@ -6,19 +6,19 @@
 
 Mendix apps can simply be viewed in mobile web browsers.
 However, some features of mobile devices cannot be accessed through HTML and Javascript.
-Also, if you want to publish your app on the Apple App Store, Google Play or Microsoft Phone Store, you have to wrap your app in a native shell.
-We use PhoneGap to do this.
-PhoneGap creates a native wrapper around a web application and provides access to native functions through a Javascript API.
+Also, if you want to publish your app in the Apple App Store or Google Play Store, you have to wrap your app in a native shell.
+We use [PhoneGap/Cordova](http://phonegap.com/) to do this.
+PhoneGap creates a native wrapper around a web application and provides access to native functionality through a Javascript API.
 These apps are also called _hybrid_ apps because they are a hybrid of a web and a native app.
 
 This project contains the Mendix PhoneGap Build app template.
-It can be used to customize your mobile Mendix app, debug the app using emulators, and build installable packages of your app, either locally or using Phonegap Build.
+It can be used to customize your mobile Mendix app, debug the app using emulators, and build installable packages of your app, either locally or in the cloud using [Phonegap Build](https://build.phonegap.com/).
 By using this template, you can easily adapt many facets of your app, like styling, icons, splash screens, and the login screen.
 
 ## Prerequisites
 
 - Install NodeJS
-    - You can download the installer from [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+    - You can download the installer from [nodejs.org](https://nodejs.org/en/download/)
     - On MacOS, you can use Brew to install NodeJS: `brew install node`
     - On Unix, you can use your distro's package manager, e.g. for Debian-based systems: `sudo apt-get install node`
 - Make sure that the NodeJS executable is on your path. In most cases, this is done for you by the installer.
@@ -42,7 +42,12 @@ In order to create deployment packages locally (instead of with Phonegap Build) 
 
 For Android, the easiest approach is to install [Android Studio](https://developer.android.com/studio/index.html).
 You can find installation instructions for each platform (Windows/Mac/Linux) [here](https://developer.android.com/studio/install.html).
-  
+
+By default, apps built with Phonegap target Android SDK level 14 (Android 4.0+).
+You can control the target SDK using the _config.xml_ file.
+Make sure that you install the appropriate SDK version using the Android SDK manager.
+You can find more details about specifying Android versions on the [Phonegap documentation website](http://docs.phonegap.com/phonegap-build/configuring/preferences/#android-targetSdkVersion).
+
 #### iOS
 
 For build iOS packages locally and for running your app on an iOS emulator, you are required to use an Apple device (MacBook / iMac), with Xcode installed. You can install Xcode through iTunes.
@@ -52,7 +57,7 @@ For build iOS packages locally and for running your app on an iOS emulator, you 
 The project structure consists of the following elements:
 
 - **/src**: this is where you place all customizations for your app
-    - **/www**: 
+    - **/www**:
         - **/images**: any images that you'd like to use on e.g. the login screen
         - **/styles**: styling for e.g. the login screen, in the form of css files
         - **/scripts**: javascript files that customize the behavior of your app
@@ -76,8 +81,8 @@ You can trigger a build by executing `npm run package` from the root folder of y
 
 The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the NodeJS executable).
 
-- **target=[d|t|a|p]**: Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=t` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
-- **[x86|arm]**: Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.
+- **target=[d|t|a|p]**: [default: production] Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=t` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
+- **[x86|arm]**: [default: arm] Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.
 
 ## Building your app with Phonegap Build
 
@@ -85,7 +90,7 @@ After creating a build package, you can build installation packages using Phoneg
 In order to do so, you'll need a Phonegap Build account.
 You can create one [here](https://build.phonegap.com/).
 
-Once you have an account, you can either upload the produced .zip file manually, or trigger the process from the command line.
+Once you have an account, you can either upload the produced .zip file manually, or trigger the process from the command line:
 
 ### From the command line
 
@@ -113,7 +118,8 @@ Please refer to the appropriate Cordova documentation for details:
 
 ## Customizing your app
 
-When you first download this project, it is fairly empty. Most functionality and styling is implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
+When you first download this project, it is mostly empty.
+All functionality and styling is by default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
 
 However, you can customize your hybrid app in several ways. All defaults from the base package can be overridden and/or extended, including the build process itself.
 
@@ -157,8 +163,7 @@ In case you have downloaded this package through the Mendix portal, all icons an
 ### Client behavior (advanced)
 
 The Mendix hybrid app is primarily a shell, that loads you Mendix hybrid application in a webview.
-The shell itself does not contain a lot of custom code.
-However, there is some code to properly handle several mobile and Mendix specific features, such as the back button behavior on Android, and the preparation of files for running in Offline mode.
+Besides the Phonegap library, the shell primarily contains some code to properly handle several mobile and Mendix specific features, such as the back button behavior on Android, and the preparation of files for running in offline mode.
 
 Most of this code is implemented as part of the mendix-hybrid-app-base package, and cannot easily be overridden.
 You can run custom code in two specific cases:
@@ -167,8 +172,14 @@ You can run custom code in two specific cases:
 
 To implement custom behavior for these cases, adapt _/src/www/scripts/entry.js_ to your needs.
 
-## Customizing the build process (advanced)
+### Customizing the build process (advanced)
 
 You can customize the build process by making changes to _webpack.config.js_, in the root folder of this project.
 All Webpack configuration you add here will be merged with the default Webpack configuration.
 You can read more about this in [the documentation of webpack-merge](https://www.npmjs.com/package/webpack-merge).
+
+## Upgrading the base package
+
+As described above, all default functionality and styling is implemented as part of the `mendix-hybrid-app-base` dependency.
+We will occasionally release new versions of this package, providing new features and bug fixes.
+You can upgrade the base package by running `npm upgrade` from the root of your project.
