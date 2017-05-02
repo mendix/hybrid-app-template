@@ -1,6 +1,6 @@
 {
   "name": "mendix-hybrid-app-template",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "init": "node init",
