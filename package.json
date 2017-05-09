@@ -1,6 +1,6 @@
 {
   "name": "mendix-hybrid-app-template",
-  "version": "v1.0.1",
+  "version": "v1.0.2",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "init": "node init",
@@ -28,10 +28,10 @@
     "README.md"
   ],
   "dependencies": {
-    "mendix-hybrid-app-base": "^1.0.0"
+    "mendix-hybrid-app-base": "^1.0.2"
   },
   "devDependencies": {
-    "phonegap": "^6.4.8",
+    "phonegap": "^6.5.0",
     "shelljs": "^0.7.7",
     "webpack": "^2.2.1",
     "webpack-merge": "^4.0.0"
