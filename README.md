@@ -13,11 +13,12 @@ By using this template, you can easily adapt many facets of your app, like styli
 
 ## Prerequisites
 
-- Install NodeJS
+- Install Node.js
     - You can download the installer from [nodejs.org](https://nodejs.org/en/download/)
-    - On MacOS, you can use Brew to install NodeJS: `brew install node`
+    - On MacOS, you can use Brew to install Node.js: `brew install node`
     - On Unix, you can use your distro's package manager, e.g. for Debian-based systems: `sudo apt-get install node`
-- Make sure that the NodeJS executable is on your path. In most cases, this is done for you by the installer.
+- Make sure you have a LTS version of Node.js installed. At the moment this is [version 6](https://github.com/nodejs/LTS#lts-schedule1). You can check this in your terminal by typing `node -v`
+- Make sure that the Node.js executable is on your path. In most cases, this is done for you by the installer.
 
 ## Setup
 
@@ -75,7 +76,7 @@ We use [Webpack 2](https://webpack.js.org/) to bundle your custom files, togethe
 
 You can trigger a build by executing `npm run package` from the root folder of your project. This will produce a .zip file in the _/dist_ folder, targeted at your production environment.
 
-The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the NodeJS executable).
+The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the Node.js executable).
 
 - **target=[d|t|a|p]**: [default: production] Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=t` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
 - **[x86|arm]**: [default: arm] Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.

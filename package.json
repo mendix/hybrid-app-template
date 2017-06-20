@@ -4,9 +4,9 @@
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "init": "node init",
-    "install": "node init && webpack",
-    "package": "webpack",
-    "watch": "webpack --watch",
+    "install": "node init && node ./node_modules/webpack/bin/webpack",
+    "package": "node ./node_modules/webpack/bin/webpack",
+    "watch": "node ./node_modules/webpack/bin/webpack --watch",
     "android": "cd build && phonegap run android",
     "android-build": "cd build && phonegap build android",
     "android-remote": "cd build && phonegap remote run android",
