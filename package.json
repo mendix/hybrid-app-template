@@ -7,12 +7,13 @@
     "install": "node init && webpack",
     "package": "webpack",
     "watch": "webpack --watch",
-    "android": "cd build && phonegap run android",
-    "android-build": "cd build && phonegap build android",
-    "android-remote": "cd build && phonegap remote run android",
-    "ios": "cd build && phonegap run ios",
-    "ios-build": "cd build && phonegap build ios",
-    "ios-remote": "cd build && phonegap remote run ios",
+    "platform": "cd build && phonegap platforms",
+    "plugin": "cd build && phonegap plugin",
+    "prepare": "cd build && phonegap prepare",
+    "compile": "cd build && phonegap compile",
+    "build": "cd build && phonegap build",
+    "run": "cd build && phonegap run",
+    "remote": "cd build && phonegap remote",
     "phonegap-login": "cd build && phonegap remote login",
     "phonegap-logout": "cd build && phonegap remote logout"
   },
@@ -25,11 +26,12 @@
     "src",
     "*.js",
     "yarn.lock",
+    "package-lock.json",
     "README.md"
   ],
   "dependencies": {
     "uglify-js": "^2.8.28",
-    "mendix-hybrid-app-base": "^1.0.5"
+    "mendix-hybrid-app-base": "^1.1.0"
   },
   "devDependencies": {
     "phonegap": "^6.5.0",

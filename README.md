@@ -77,7 +77,7 @@ You can trigger a build by executing `npm run package` from the root folder of y
 
 The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the NodeJS executable).
 
-- **target=[d|t|a|p]**: [default: production] Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=t` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
+- **target=[d|t|a|p]**: [default: production] Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=test` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
 - **[x86|arm]**: [default: arm] Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.
 
 ## Building your app with Phonegap Build
@@ -92,7 +92,7 @@ Once you have an account, you can either upload the produced .zip file manually,
 
 First, log in to the service by running `npm run phonegap-login`. You'll be asked for your credentials.
 
-Afterwards, you can start the remote build process by running `npm run android-remote` or `npm run ios-remote`.
+Afterwards, you can start the remote build process by running `npm run remote -- android` or `npm run remote -- ios`.
 
 ### Manually
 
@@ -105,7 +105,7 @@ Use the .zip file produced earlier, which you can find in the _/dist_ folder.
 If you have installed the prerequisites outlined in **Setup / Advanced Setup**, you'll be able to build installation packages locally.
 This approach is more complicated, but once you have all dependencies set up, it is generally faster than building remotely using Phonegap Build.
 
-To build installation packages locally, execute either `npm run android-build` or `npm run ios-build`.
+To build installation packages locally, execute either `npm run build -- android` or `npm run build -- ios`.
 
 In case you want to deploy your app on a real device, you will likely need to sign your app.
 Please refer to the appropriate Cordova documentation for details:
