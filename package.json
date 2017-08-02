@@ -5,17 +5,17 @@
   "scripts": {
     "init": "node init",
     "install": "node init && node ./node_modules/webpack/bin/webpack",
-    "package": "node ./node_modules/webpack/bin/webpack",
-    "watch": "node ./node_modules/webpack/bin/webpack --watch",
-    "platform": "cd build && phonegap platforms",
-    "plugin": "cd build && phonegap plugin",
-    "prepare": "cd build && phonegap prepare",
-    "compile": "cd build && phonegap compile",
-    "build": "cd build && phonegap build",
-    "run": "cd build && phonegap run",
-    "remote": "cd build && phonegap remote run",
-    "phonegap-login": "cd build && phonegap remote login",
-    "phonegap-logout": "cd build && phonegap remote logout"
+    "pgpackage": "node ./node_modules/webpack/bin/webpack",
+    "pgwatch": "node ./node_modules/webpack/bin/webpack --watch",
+    "pgplatform": "cd build && phonegap platforms",
+    "pgplugin": "cd build && phonegap plugin",
+    "pgprepare": "cd build && phonegap prepare",
+    "pgcompile": "cd build && phonegap compile",
+    "pgbuild": "cd build && phonegap build",
+    "pgrunapp": "cd build && phonegap run",
+    "pgremote": "cd build && phonegap remote run",
+    "pglogin": "cd build && phonegap remote login",
+    "pglogout": "cd build && phonegap remote logout"
   },
   "main": "src/www/scripts/entry.js",
   "directories": {
@@ -30,8 +30,8 @@
     "README.md"
   ],
   "dependencies": {
-    "mendix-hybrid-app-base": "^1.1.0",
-    "uglify-js": "^2.8.28"
+    "global": "^4.3.2",
+    "mendix-hybrid-app-base": "^1.1.0"
   },
   "devDependencies": {
     "phonegap": "^6.5.0",
