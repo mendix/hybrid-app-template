@@ -60,6 +60,14 @@ $ npm run package:device            # create PGB package in `dist`
 
 Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the `+ new app` button. When asked, upload the PhoneGap Build package from the `dist` folder.
 
+# App signing
+
+In case you want to deploy your app on a real device, you will likely need to sign your app.
+Please refer to the appropriate Cordova documentation for details:
+
+- [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
+- [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
+
 # Customizing your app
 
 When you first download this project, it is mostly empty. All functionality and styling is by default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
