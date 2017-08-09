@@ -17,9 +17,14 @@
     "start": "cd build && phonegap run",
     "start:emulator": "cd build && phonegap run --emulator",
     "start:device": "cd build && phonegap run --device",
-    "remote": "cd build && phonegap remote run",
-    "phonegap-login": "cd build && phonegap remote login",
-    "phonegap-logout": "cd build && phonegap remote logout"
+    "phonegap:login": "cd build && phonegap remote login",
+    "phonegap:logout": "cd build && phonegap remote logout",
+    "phonegap:build": "cd build && phonegap remote build",
+    "phonegap:build:android": "cd build && phonegap remote build android",
+    "phonegap:build:ios": "cd build && phonegap remote build ios",
+    "phonegap:start": "cd build && phonegap remote run",
+    "phonegap:start:android": "cd build && phonegap remote run android",
+    "phonegap:start:ios": "cd build && phonegap remote run ios"
   },
   "main": "src/www/scripts/entry.js",
   "directories": {
