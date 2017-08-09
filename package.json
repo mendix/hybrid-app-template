@@ -14,7 +14,9 @@
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
     "build": "cd build && phonegap build",
-    "run": "cd build && phonegap run",
+    "start": "cd build && phonegap run",
+    "start:emulator": "cd build && phonegap run --emulator",
+    "start:device": "cd build && phonegap run --device",
     "remote": "cd build && phonegap remote run",
     "phonegap-login": "cd build && phonegap remote login",
     "phonegap-logout": "cd build && phonegap remote logout"
