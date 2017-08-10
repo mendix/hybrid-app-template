@@ -1,6 +1,12 @@
 # Mendix PhoneGap Build App Template
 
-This is the template used to create the hybrid app wrapper for Mendix apps.
+Mendix apps can simply be viewed in mobile web browsers. However, some features of mobile devices cannot be accessed through HTML and JavaScript. Also, if you want to publish your app in the Apple App Store or Google Play Store, you have to wrap your app in a native shell. We use PhoneGap/Cordova to do this. PhoneGap creates a native wrapper around a web application and provides access to native functionality through a JavaScript API. These apps are also called hybrid apps because they are a hybrid of a web and a native app.
+
+This project contains the Mendix PhoneGap Build app template. You can use it to
+- customize your mobile Mendix app: styling, icons, splash screens and code,
+- open the platform specific code inside the appropriate IDEs,
+- debug the app using emulators,
+- build installable packages, either locally or in the cloud using PhoneGap Build.
 
 # Prerequisites
 
