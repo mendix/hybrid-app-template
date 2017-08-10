@@ -42,7 +42,19 @@ $ npm run platform:android          # setup for Android or
 $ npm run platform:ios              # setup for iOS
 ```
 
-To build and run the app:
+If you cloned the repository or want to change some settings, edit the file `config/parameters.json`
+(create it if necessary). It should at least contain the following properties, with values
+appropriate for your app:
+```json
+{
+    "identifier": "io.mxapps.myapp",
+    "name": "My App",
+    "url": "https://myapp.mxapps.io"
+}
+```
+For information on further customization, refer to [Customizing your app](#customizing-your-app).
+
+Now, build and run the app:
 ```
 $ npm run package:emulator          # prepare `build` directory for emulator, alternatively use package:device
 $ npm run start:emulator            # run on emulator, alternatively use start:device
