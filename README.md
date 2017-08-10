@@ -90,7 +90,8 @@ Please refer to the appropriate Cordova documentation for details:
 
 # Customize DTAP endpoint
 
-To target a specific DTAP endpoint with your app you can specify it as a parameter to `npm run package:*", e.g:
+To target a specific DTAP endpoint with your app you can specify it as a parameter to
+`npm run package:*`, e.g:
 ```
 $ npm run package:device -- --env.target=test   # target the test endpoint
 ```
