@@ -80,6 +80,27 @@ When you first download this project, it is mostly empty. All functionality and 
 
 You can customize your hybrid app in several ways. All defaults from the base package can be overridden and/or extended, including the build process itself.
 
+## Folder structure
+
+The project structure consists of the following elements:
+
+- `src/`: this is where you place all customizations for your app
+    - `www/`:
+        - `images`: any images that you'd like to use on e.g. the login screen
+        - `styles`: CSS files with styling for e.g. the login screen
+        - `scripts`: JavaScript files that customize the behavior of your app
+        - `index.html.mustache`: Mustache template file used to generate the index page
+    - `resources/`: icons and splash screens
+    - `config.xml.mustache`: template file that is used to generate the Phonegap configuration file
+- `config/`: this is where external configuration files go; these files are optional, overriding the defaults. Example files containing the defaults are put here upon `npm install`. Possible configuration files are:
+    - `environments.json`: a description of all available deployment environments for your app, including the app IDs and URLs
+    - `parameters.json`: settings that influence some aspects of the build process and the resulting app, such as Android/iOS support, offline mode, and pin login
+    - `resources.json`: descriptions of all resources, such as icons and splash screens, including their types and sizes
+    - `texts.json`: translations/customizations for the static texts in the hybrid shell part of your app
+- `build/`: (generated) contains all intermediate build files, such as the bundles javascript and css. The contents of this folder are overwritten every time you run a build
+- `dist/`: (generated) the final build packages will end up here
+- `webpack.config.js`: starting point for the build process
+
 ## Basic app settings
 
 Several simple app settings, such as the app name and identifier, can be set in `config/parameters.json`. If you've downloaded this project from the Mendix Portal, the file is already there. Otherwise, you can look at the `config/parameters.json.example` file.
