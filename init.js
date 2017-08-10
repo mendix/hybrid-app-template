@@ -11,6 +11,7 @@ const shell = require("shelljs");
 
 // Examples of config files
 [
+    "config/environments.json",
     "config/parameters.json",
     "config/resources.json",
     "config/texts.json"

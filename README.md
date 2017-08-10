@@ -74,6 +74,15 @@ Please refer to the appropriate Cordova documentation for details:
 - [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
 - [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
 
+# Customize DTAP endpoint
+
+To target a specific DTAP endpoint with your app you can specify it as a parameter to `npm run package:*", e.g:
+```
+$ npm run package:device -- --env.target=test   # target the test endpoint
+```
+
+Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For convencience you can shorten these to the first letter.
+
 # Customizing your app
 
 When you first download this project, it is mostly empty. All functionality and styling is by default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
