@@ -19,11 +19,10 @@ Make sure that the following is installed on your system:
     - MacOS: use [Brew](https://brew.sh/) to install `Node.js`: `brew install node`
     - Linux, BSD, etc: install using the available package manager, e.g. on Debian: `sudo apt-get install node`
 
-For building locally you also need:
+For building locally you also need a development environment for your target platform:
 
-- Development environment for your target platform
-    - Android: [Android Studio](https://developer.android.com/studio/index.html) by following [the instructions](https://developer.android.com/studio/install.html)
-    - iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
+- Android: [Android Studio](https://developer.android.com/studio/index.html) by following [the instructions](https://developer.android.com/studio/install.html)
+- iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
 
 # Build and run locally
 
