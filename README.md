@@ -82,7 +82,7 @@ You can customize your hybrid app in several ways. All defaults from the base pa
 
 ## Basic app settings
 
-Several simple app settings, such as the app name and identifier, can be set in `config/parameters.json`. If you've downloaded this project the Mendix Portal, the file is already there. Otherwise, you can look at the `config/parameters.json.example` file.
+Several simple app settings, such as the app name and identifier, can be set in `config/parameters.json`. If you've downloaded this project from the Mendix Portal, the file is already there. Otherwise, you can look at the `config/parameters.json.example` file.
 
 ## Styling
 
