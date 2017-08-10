@@ -52,7 +52,8 @@ $ npm run start:emulator            # run on emulator, alternatively use start:d
 
 With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
 the development environment for your target platform. This way you can target iOS without owning an
-Apple computer.
+Apple computer. You still need a Apple developer account, provisioning profile and signing key. See
+the [PhoneGap site](http://docs.phonegap.com/phonegap-build/signing/ios/) for more details.
 
 To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
 first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
