@@ -32,6 +32,57 @@ For building locally you also need a development environment for your target pla
   [the instructions](https://developer.android.com/studio/install.html)
 - iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
 
+# Build on PhoneGap
+
+With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
+the development environment for your target platform. This way you can target iOS without owning an
+Apple computer. You still need an Apple developer account, provisioning profile and signing key. See
+the [PhoneGap site](http://docs.phonegap.com/phonegap-build/signing/ios/) for more details.
+
+To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
+first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
+regular `.zip` file containing JavaScript and resource files.
+
+## Through uploading to PhoneGap Build
+
+To build through the PhoneGap site, first build a PhoneGap Build package:
+```
+$ npm install                       # install dependencies
+$ npm run package:device            # create PGB package in `dist`
+```
+
+Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the
+`+ new app` button. When asked, upload the PhoneGap Build package from the `dist` folder.
+
+## Through the command line
+
+To build on PhoneGap Build through the command line:
+```
+$ npm install                       # install dependencies
+$ npm run package:device            # prepare `build` directory for device
+$ npm run phonegap:login            # login into the PGB service
+$ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
+```
+
+# Customize DTAP endpoint
+
+To target a specific DTAP endpoint with your app you can specify it as a parameter to
+`npm run package:*`, e.g:
+```
+$ npm run package:device -- --env.target=test   # target the test endpoint
+```
+
+Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For
+convencience you can shorten these to the first letter.
+
+# App signing
+
+In case you want to deploy your app on a real device, you will likely need to sign your app.
+Please refer to the appropriate Cordova documentation for details:
+
+- [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
+- [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
+
 # Build and run locally
 
 If this is the initial build, first do some preparation:
@@ -59,57 +110,6 @@ Now, build and run the app:
 $ npm run package:emulator          # prepare `build` directory for emulator, alternatively use package:device
 $ npm run start:emulator            # run on emulator, alternatively use start:device
 ```
-
-# Build on PhoneGap
-
-With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
-the development environment for your target platform. This way you can target iOS without owning an
-Apple computer. You still need an Apple developer account, provisioning profile and signing key. See
-the [PhoneGap site](http://docs.phonegap.com/phonegap-build/signing/ios/) for more details.
-
-To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
-first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
-regular `.zip` file containing JavaScript and resource files.
-
-## Through the command line
-
-To build on PhoneGap Build through the command line:
-```
-$ npm install                       # install dependencies
-$ npm run package:device            # prepare `build` directory for device
-$ npm run phonegap:login            # login into the PGB service
-$ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
-```
-
-## Through uploading to PhoneGap Build
-
-To build through the PhoneGap site, first build a PhoneGap Build package:
-```
-$ npm install                       # install dependencies
-$ npm run package:device            # create PGB package in `dist`
-```
-
-Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the
-`+ new app` button. When asked, upload the PhoneGap Build package from the `dist` folder.
-
-# App signing
-
-In case you want to deploy your app on a real device, you will likely need to sign your app.
-Please refer to the appropriate Cordova documentation for details:
-
-- [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
-- [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
-
-# Customize DTAP endpoint
-
-To target a specific DTAP endpoint with your app you can specify it as a parameter to
-`npm run package:*`, e.g:
-```
-$ npm run package:device -- --env.target=test   # target the test endpoint
-```
-
-Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For
-convencience you can shorten these to the first letter.
 
 # Customizing your app
 
