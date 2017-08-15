@@ -5,9 +5,9 @@
   "scripts": {
     "init": "node init",
     "install": "npm run init",
-    "package:emulator": "webpack --env.x86",
-    "package:device": "webpack",
-    "package:watch": "npm run package:emulator -- --watch",
+    "package:x86": "webpack --env.x86",
+    "package": "webpack",
+    "package:watch": "npm run package:x86 -- --watch",
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
     "build": "cd build && phonegap build",

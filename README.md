@@ -43,12 +43,16 @@ To use the PhoneGap Build service you need to [register for an account](https://
 first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
 regular `.zip` file containing JavaScript and resource files.
 
+PhoneGap build packages target either ARM (phones and most other devices) which is the default, or
+x86 platforms (emulators and other devices). 
+
 ## Through uploading to PhoneGap Build
 
 To build through the PhoneGap site, first build a PhoneGap Build package:
 ```
 $ npm install                       # install dependencies
-$ npm run package:device            # create PGB package in `dist`
+$ npm run package                   # create ARM PGB package in `dist` or
+$ npm run package:x86               # create x86 PGB package in `dist`
 ```
 
 Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the
@@ -59,7 +63,8 @@ Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/)
 To build on PhoneGap Build through the command line:
 ```
 $ npm install                       # install dependencies
-$ npm run package:device            # prepare `build` directory for device
+$ npm run package                   # prepare `build` directory for ARM or
+$ npm run package:x86               # prepare `build` directory for x86
 $ npm run phonegap:login            # login into the PGB service
 $ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
 ```
@@ -67,9 +72,9 @@ $ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:
 # Customize DTAP endpoint
 
 To target a specific DTAP endpoint with your app you can specify it as a parameter to
-`npm run package:*`, e.g:
+`npm run package` or `npm run package:x86`, e.g:
 ```
-$ npm run package:device -- --env.target=test   # target the test endpoint
+$ npm run package -- --env.target=test  # target the test endpoint for ARM architecture
 ```
 
 Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For
@@ -88,7 +93,8 @@ Please refer to the appropriate Cordova documentation for details:
 If this is the initial build, first do some preparation:
 ```
 $ npm install                       # install dependencies
-$ npm run package:emulator          # prepare `build` directory for emulator, alternatively use package:device
+$ npm run package:x86               # prepare `build` directory for x86 or
+$ npm run package                   # prepare `build` directory for ARM
 $ npm run platform:android          # setup for Android or
 $ npm run platform:ios              # setup for iOS
 ```
@@ -107,7 +113,8 @@ For information on further customization, refer to [Customizing your app](#custo
 
 Now, build and run the app:
 ```
-$ npm run package:emulator          # prepare `build` directory for emulator, alternatively use package:device
+$ npm run package:x86               # prepare `build` directory for x86 or
+$ npm run package                   # prepare `build` directory for ARM
 $ npm run start:emulator            # run on emulator, alternatively use start:device
 ```
 
