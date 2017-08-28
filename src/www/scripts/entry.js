@@ -7,3 +7,11 @@ MxApp.onConfigReady(function(config) {
 MxApp.onClientReady(function(mx) {
     // Perform any custom operations on the Mendix client object here
 });
+
+// Uncomment this function if you would like to control when app updates are performed
+/*
+MxApp.onAppUpdateAvailable(function(updateCallback) {
+    // This function is called when a new version of your Mendix app is available.
+    // Invoke the callback to trigger the app update mechanism.
+});
+*/
