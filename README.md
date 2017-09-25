@@ -1,182 +1,207 @@
-# Mendix PhoneGap Build app template
+# Mendix PhoneGap Build App Template
 
-Mendix apps can simply be viewed in mobile web browsers.
-However, some features of mobile devices cannot be accessed through HTML and Javascript.
-Also, if you want to publish your app in the Apple App Store or Google Play Store, you have to wrap your app in a native shell.
-We use [PhoneGap/Cordova](http://phonegap.com/) to do this.
-PhoneGap creates a native wrapper around a web application and provides access to native functionality through a Javascript API.
-These apps are also called _hybrid_ apps because they are a hybrid of a web and a native app.
+Mendix apps can simply be viewed in mobile web browsers. However, some features of mobile devices
+cannot be accessed through HTML and JavaScript. Also, if you want to publish your app in the Apple
+App Store or Google Play Store, you have to wrap your app in a native shell. We use
+[Cordova/PhoneGap](https://phonegap.com) to do this. PhoneGap creates a native wrapper around a web
+application and provides access to native functionality through a JavaScript API. These apps are
+called _hybrid_ apps because they are a hybrid of a web and a native app.
 
-This project contains the Mendix PhoneGap Build app template.
-It can be used to customize your mobile Mendix app, debug the app using emulators, and build installable packages of your app, either locally or in the cloud using [Phonegap Build](https://build.phonegap.com/).
-By using this template, you can easily adapt many facets of your app, like styling, icons, splash screens, and the login screen.
+This project contains the Mendix PhoneGap Build app template. You can use it to
 
-## Prerequisites
+- customize your mobile Mendix app: styling, icons, splash screens and code,
+- open the platform specific code inside the appropriate IDEs,
+- debug the app using emulators,
+- build installable packages, either locally or in the cloud using [PhoneGap Build](https://build.phonegap.com).
 
-- Install Node.js
-    - You can download the installer from [nodejs.org](https://nodejs.org/en/download/)
-    - On MacOS, you can use Brew to install Node.js: `brew install node`
-    - On Unix, you can use your distro's package manager, e.g. for Debian-based systems: `sudo apt-get install node`
-- Make sure you have a LTS version of Node.js installed. At the moment this is [version 6](https://github.com/nodejs/LTS#lts-schedule1). You can check this in your terminal by typing `node -v`
-- Make sure that the Node.js executable is on your path. In most cases, this is done for you by the installer.
+# Prerequisites
 
-## Setup
+Make sure that the following is installed on your system:
 
-Hint: all text displayed between `like this`, is to be executed from the command line.
+- A clone of this repository or the customizable package for your app, available in the 'Deploy'
+  section of the Mendix Portal. When starting from a customizable package, basic configuration for
+  your app has already been done.
+- Recent `Node.js`. This code was tested with version 6. You can check by running `node -v`.
+    - Windows: install from [nodejs.org](https://nodejs.org/en/download/)
+    - MacOS: use [Brew](https://brew.sh/) to install `Node.js`: `brew install node`
+    - Linux, BSD, etc: install using the available package manager, e.g. on Debian: `sudo apt-get install node`
 
-- Obtain a local copy of this project, by doing one of the following:
-    - Download a .zip package through the Mendix Portal. By following this path, a lot of configuration will already be filled in for you.
-    - Clone or fork this repository from GitHub
-- Go to the root directory of the project: `cd <path/to/project`
-- Install all dependencies: `npm install`
-    - This will also prepare a .zip package that can be sent to Phonegap Build, in the "dist" folder.
+For building locally you also need a development environment for your target platform:
 
-### Advanced Setup
+- Android: [Android Studio](https://developer.android.com/studio/index.html) by following
+  [the instructions](https://developer.android.com/studio/install.html)
+- iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
 
-In order to create deployment packages locally (instead of with Phonegap Build) or to run your app on an emulator, you will need to install additional tooling.
+# Build on PhoneGap
 
-#### Android
+With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
+the development environment for your target platform. This way you can target iOS without owning an
+Apple computer. You still need an Apple developer account, provisioning profile and signing key. See
+the [PhoneGap site](http://docs.phonegap.com/phonegap-build/signing/ios/) for more details.
 
-For Android, the easiest approach is to install [Android Studio](https://developer.android.com/studio/index.html).
-You can find installation instructions for each platform (Windows/Mac/Linux) [here](https://developer.android.com/studio/install.html).
+To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
+first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
+regular `.zip` file containing JavaScript and resource files.
 
-By default, apps built with Phonegap target Android SDK level 14 (Android 4.0+).
-You can control the target SDK using the _config.xml_ file.
-Make sure that you install the appropriate SDK version using the Android SDK manager.
-You can find more details about specifying Android versions on the [Phonegap documentation website](http://docs.phonegap.com/phonegap-build/configuring/preferences/#android-targetSdkVersion).
+PhoneGap build packages target either ARM (phones and most other devices) which is the default, or
+x86 platforms (emulators and other devices). 
 
-#### iOS
+## Through uploading to PhoneGap Build
 
-For build iOS packages locally and for running your app on an iOS emulator, you are required to use an Apple device (MacBook / iMac), with Xcode installed. You can install Xcode through iTunes.
+To build through the PhoneGap site, first build a PhoneGap Build package:
+```
+$ npm install                       # install dependencies
+$ npm run package                   # create ARM PGB package in `dist` or
+$ npm run package:x86               # create x86 PGB package in `dist`
+```
 
-## Folder Structure
+Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the
+`+ new app` button. When asked, upload the PhoneGap Build package from the `dist` folder.
 
-The project structure consists of the following elements:
+## Through the command line
 
-- **/src**: this is where you place all customizations for your app
-    - **/www**:
-        - **/images**: any images that you'd like to use on e.g. the login screen
-        - **/styles**: styling for e.g. the login screen, in the form of css files
-        - **/scripts**: javascript files that customize the behavior of your app
-        - **index.html.mustache**: a template file that is used to generate the index page
-    - **/resources**: a collection of icons and splash screens
-    - **config.xml.mustache**: a template file that is used to generate the Phonegap configuration file
-- **/config**: this is where all external configuration files go; these files are optional, overriding the defaults
-    - **environments.json**: a description of all available deployment environments for your app, including the app IDs and URLs
-    - **parameters.json**: settings that influence some aspects of the build process and the resulting app, such as Android/iOS support, offline mode, and pin login
-    - **resources.json**: descriptions of all resources, such as icons and splash screens, including their types and sizes
-    - **texts.json**: translations/customizations for the static texts in the hybrid shell part of your app
-- **/build**: contains all intermediate build files, such as the bundles javascript and css. The contents of this folder are overwritten every time you run a build
-- **/dist**: the final build packages will end up here
-- **webpack.config.js**: starting point for the build process
+To build on PhoneGap Build through the command line:
+```
+$ npm install                       # install dependencies
+$ npm run package                   # prepare `build` directory for ARM or
+$ npm run package:x86               # prepare `build` directory for x86
+$ npm run phonegap:login            # login into the PGB service
+$ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
+```
 
-## Building your app package
+# Customize DTAP endpoint
 
-We use [Webpack 2](https://webpack.js.org/) to bundle your custom files, together with the base package files, into a .zip file that can be sent to Phonegap Build.
+To target a specific DTAP endpoint with your app you can specify it as a parameter to
+`npm run package` or `npm run package:x86`, e.g:
+```
+$ npm run package -- --env.target=test  # target the test endpoint for ARM architecture
+```
 
-You can trigger a build by executing `npm run package` from the root folder of your project. This will produce a .zip file in the _/dist_ folder, targeted at your production environment.
+Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For
+convencience you can shorten these to the first letter.
 
-The build process can be customized by adding parameters. Add `--` followed by `--env.<param>` to influence the outcome. (the extra `--` are needed to properly pass the parameters to Webpack, instead of to the Node.js executable).
-
-- **target=[d|t|a|p]**: [default: production] Use this parameter to customize the endpoint of your app; e.g. `npm run package -- --env.target=test` will produce a package that is targeted at the TEST environment of your Mendix application. You can also use the longer versions of each environment name; e.g. `--env.target=p`, `--env.target=prod`, and `--env.target=production` all result in a package targeting the PROD environment.
-- **[x86|arm]**: [default: arm] Use these parameters to influence the architecture for which the app is built; e.g. `npm run package -- --env.x86` will produce a package that can run on an emulator on most PCs.
-
-## Building your app with Phonegap Build
-
-After creating a build package, you can build installation packages using Phonegap Build.
-In order to do so, you'll need a Phonegap Build account.
-You can create one [here](https://build.phonegap.com/).
-
-Once you have an account, you can either upload the produced .zip file manually, or trigger the process from the command line:
-
-### From the command line
-
-First, log in to the service by running `npm run phonegap-login`. You'll be asked for your credentials.
-
-Afterwards, you can start the remote build process by running `npm run remote -- android` or `npm run remote -- ios`.
-
-### Manually
-
-Navigate to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click on `+ new app`.
-You'll be guided through the steps from there.
-Use the .zip file produced earlier, which you can find in the _/dist_ folder.
-
-## Building your app locally
-
-If you have installed the prerequisites outlined in **Setup / Advanced Setup**, you'll be able to build installation packages locally.
-This approach is more complicated, but once you have all dependencies set up, it is generally faster than building remotely using Phonegap Build.
-
-To build installation packages locally, execute either `npm run build -- android` or `npm run build -- ios`.
+# App signing
 
 In case you want to deploy your app on a real device, you will likely need to sign your app.
 Please refer to the appropriate Cordova documentation for details:
+
 - [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
 - [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
 
-## Customizing your app
+# Build and run locally
 
-When you first download this project, it is mostly empty.
-All functionality and styling is by default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
+If this is the initial build, first do some preparation:
+```
+$ npm install                       # install dependencies
+$ npm run package:x86               # prepare `build` directory for x86 or
+$ npm run package                   # prepare `build` directory for ARM
+$ npm run platform:android          # setup for Android or
+$ npm run platform:ios              # setup for iOS
+```
 
-However, you can customize your hybrid app in several ways. All defaults from the base package can be overridden and/or extended, including the build process itself.
+If you cloned the repository or want to change some settings, edit the file `config/parameters.json`
+(create it if necessary). It should at least contain the following properties, with values
+appropriate for your app:
+```json
+{
+    "identifier": "io.mxapps.myapp",
+    "name": "My App",
+    "url": "https://myapp.mxapps.io"
+}
+```
+For information on further customization, refer to [Customizing your app](#customizing-your-app).
 
-This section briefly describes what you'll need to for each type of change.
+Now, build and run the app:
+```
+$ npm run package:x86               # prepare `build` directory for x86 or
+$ npm run package                   # prepare `build` directory for ARM
+$ npm run start:emulator            # run on emulator, alternatively use start:device
+```
 
-### Basic app settings
+# Customizing your app
 
-Several simple app settings, such as the name and the identifier, can be set in _/config/pararmeters.json_.
-If you've downloaded this project the Mendix portal, the file is already there.
-Otherwise, you can copy it from the base package.
+When you first download this project, it is mostly empty. All functionality and styling is by
+default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
 
-### Phonegap settings
+You can customize your hybrid app in several ways. All defaults from the base package can be
+overridden and/or extended, including the build process itself.
 
-Several simple app settings, such as the name and the identifier, can be set in _/config/pararmeters.json_.
-If you've downloaded this project the Mendix portal, the file is already there.
-Otherwise, you can copy it from the base package.
+## Folder structure
 
-### Styling
+The project structure consists of the following elements:
 
-To customize the styling of the login screen (including the pin screen), add a .css file to _/src/www/styles/_.
-It will be automatically picked up by the build process.
+- `src/`: this is where you place all customizations for your app
+    - `www/`:
+        - `images`: any images that you'd like to use on e.g. the login screen
+        - `styles`: CSS files with styling for e.g. the login screen
+        - `scripts`: JavaScript files that customize the behavior of your app
+        - `index.html.mustache`: Mustache template file used to generate the index page
+    - `resources/`: icons and splash screens
+    - `config.xml.mustache`: template file that is used to generate the Phonegap configuration file
+- `config/`: this is where external configuration files go; these files are optional, overriding the
+  defaults. Example files containing the defaults are put here upon `npm install`. Possible
+  configuration files are:
+    - `environments.json`: a description of all available deployment environments for your app,
+      including the app IDs and URLs
+    - `parameters.json`: settings that influence some aspects of the build process and the resulting
+      app, such as Android/iOS support, offline mode, and pin login
+    - `resources.json`: descriptions of all resources, such as icons and splash screens, including
+      their types and sizes
+    - `texts.json`: translations/customizations for the static texts in the hybrid shell part of
+      your app
+- `build/`: (generated) contains all intermediate build files, such as the bundles javascript and
+  css. The contents of this folder are overwritten every time you run a build
+- `dist/`: (generated) the final build packages will end up here
+- `webpack.config.js`: starting point for the build process
 
-### Page structure
+## Basic app settings
 
-To change the structure and contents of the login screen (including the pin screen), you can adapt _/src/www/index.html.mustache_.
+Several simple app settings, such as the app name and identifier, can be set in
+`config/parameters.json`. If you've downloaded this project from the Mendix Portal, the file is
+already there. Otherwise, you can look at the `config/parameters.json.example` file.
 
-### Translations / custom text
+## Styling
 
-All static text in the hybrid app can be customized and/or translated.
-To do so, open _/config/texts.json_ in your favorite text editor, and look up the text you want to change on the left.
-You can then enter the replacement text on the right-hand side.
+To customize the styling of the login screen (including the pin screen), add a .css file to
+`src/www/styles/`. It will be automatically picked up by the build process.
 
-### Icons & Splash screens
+## Page structure
 
-Icons and splash screens are configure in two seperate places.
-The image files should be stored in _/src/resources_.
-The configuration of each icon and splash screen should be updated in _/config/resources.json_.
-Please make sure that all details (including the relative paths), are exactly correct.
-In case you have downloaded this package through the Mendix portal, all icons and splash screens you configured have been pre-packaged and pre-configured.
+To change the structure and contents of the login screen (including the pin screen), you can adapt
+`src/www/index.html.mustache`.
 
-### Client behavior (advanced)
+## Translations / custom text
 
-The Mendix hybrid app is primarily a shell, that loads you Mendix hybrid application in a webview.
-Besides the Phonegap library, the shell primarily contains some code to properly handle several mobile and Mendix specific features, such as the back button behavior on Android, and the preparation of files for running in offline mode.
+All static text in the hybrid app can be customized and/or translated. To do so, create a file
+`config/texts.json` containing the original text as keys and the replacement text as values. You can
+take a look at `config/texts.json.example` to see which texts are available for translation.
 
-Most of this code is implemented as part of the mendix-hybrid-app-base package, and cannot easily be overridden.
+## Icons & Splash screens
+
+Icons and splash screens are configured in two separate places. The image files themselves should be
+stored in `src/resources/`. The configuration of each icon and splash screen should be updated in
+`config/resources.json`. You can take a look at `config/resources.json.example` for an example.
+
+In case you have downloaded this package through the Mendix Portal, all configured icons and splash
+screens have already been prepackaged and preconfigured.
+
+## Client behavior (advanced)
+
 You can run custom code in two specific cases:
-* Once the client configuration has been prepared; and
-* once the Mendix client has been loaded
+- on client configuration setup
+- on Mendix client load
 
-To implement custom behavior for these cases, adapt _/src/www/scripts/entry.js_ to your needs.
+To implement custom behavior for these cases, edit `src/www/scripts/entry.js`.
 
-### Customizing the build process (advanced)
+## Customizing the build process (advanced)
 
-You can customize the build process by making changes to _webpack.config.js_, in the root folder of this project.
-All Webpack configuration you add here will be merged with the default Webpack configuration.
-You can read more about this in [the documentation of webpack-merge](https://www.npmjs.com/package/webpack-merge).
+You can customize the build process by making changes to `webpack.config.js` in the root folder of
+this project. All Webpack configuration you add here will be merged with the default Webpack
+configuration. You can read more about this in the
+[webpack-merge documentation](https://www.npmjs.com/package/webpack-merge).
 
 ## Upgrading the base package
 
-As described above, all default functionality and styling is implemented as part of the `mendix-hybrid-app-base` dependency.
-We will occasionally release new versions of this package, providing new features and bug fixes.
-You can upgrade the base package by running `npm upgrade` from the root of your project.
+Default functionality and styling is implemented in the `mendix-hybrid-app-base` package. We will
+occasionally release updates to this package. You can upgrade the base package by running
+`npm upgrade` from the root of your project.

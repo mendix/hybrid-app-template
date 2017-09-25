@@ -4,18 +4,25 @@
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "init": "node init",
-    "install": "node init && node ./node_modules/webpack/bin/webpack",
-    "pgpackage": "node ./node_modules/webpack/bin/webpack",
-    "pgwatch": "node ./node_modules/webpack/bin/webpack --watch",
-    "pgplatform": "cd build && phonegap platforms",
-    "pgplugin": "cd build && phonegap plugin",
-    "pgprepare": "cd build && phonegap prepare",
-    "pgcompile": "cd build && phonegap compile",
-    "pgbuild": "cd build && phonegap build",
-    "pgrunapp": "cd build && phonegap run",
-    "pgremote": "cd build && phonegap remote run",
-    "pglogin": "cd build && phonegap remote login",
-    "pglogout": "cd build && phonegap remote logout"
+    "install": "npm run init",
+    "package:x86": "webpack --env.x86",
+    "package": "webpack",
+    "package:watch": "npm run package:x86 -- --watch",
+    "platform:android": "cd build && phonegap platform add android",
+    "platform:ios": "cd build && phonegap platform add ios",
+    "build": "cd build && phonegap build",
+    "build:release": "cd build && phonegap build --release",
+    "start": "cd build && phonegap run",
+    "start:emulator": "cd build && phonegap run --emulator",
+    "start:device": "cd build && phonegap run --device",
+    "phonegap:login": "cd build && phonegap remote login",
+    "phonegap:logout": "cd build && phonegap remote logout",
+    "phonegap:build": "cd build && phonegap remote build",
+    "phonegap:build:android": "cd build && phonegap remote build android",
+    "phonegap:build:ios": "cd build && phonegap remote build ios",
+    "phonegap:start": "cd build && phonegap remote run",
+    "phonegap:start:android": "cd build && phonegap remote run android",
+    "phonegap:start:ios": "cd build && phonegap remote run ios"
   },
   "main": "src/www/scripts/entry.js",
   "directories": {
@@ -31,7 +38,8 @@
   ],
   "dependencies": {
     "global": "^4.3.2",
-    "mendix-hybrid-app-base": "^1.1.0"
+    "mendix-hybrid-app-base": "^1.1.0",
+    "mustache-loader": "^0.4.1"
   },
   "devDependencies": {
     "phonegap": "^6.5.0",
