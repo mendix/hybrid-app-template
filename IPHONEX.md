@@ -32,7 +32,7 @@ When building Mendix hybrid apps, there are three main flows to produce the inst
 
 ### Configure the storyboard images using the simple workflow
 
-Place the new storyboard images (using the filenames outlined below) in the `res/android` or `res/ios` folder of your `phonegap.zip` file.
+Place the new storyboard images (using the filenames outlined below) in the `res/ios` folder of your `phonegap.zip` file.
 
 Remove any `<splash ... />` configuration lines within the `<platform name="ios">` element of `config.xml`.
 Add new configuration lines according to the instructions [here](#single-image-launch-screen) or [here](#multi-image-launch-screen).
@@ -41,7 +41,7 @@ Rezip everything, and upload the file to Phonegap Build.
 
 ### Configure the storyboard images using the advanced workflow
 
-Place the new storyboard images (using the filenames outlined below) in the `src/resources/android` or `src/resources/ios` folder of your hybrid project folder (the folder in which the file you're currently reading resides).
+Place the new storyboard images (using the filenames outlined below) in the `src/resources/ios` folder of your hybrid project folder (the folder in which the file you're currently reading resides).
 
 Remove any `{"tag": "splash",` configuration lines within the `"iosImages"` element of `config/resources.json`.
 Add new configuration lines according to the instructions below.
