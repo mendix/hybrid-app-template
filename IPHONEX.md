@@ -4,8 +4,8 @@ The iPhone X is different to other iPhones in several ways.
 Its screen fills almost the entire front of the device,
 the screen size and aspect ratio are different (375×812 points or 1125×2436 pixels),
 it has distinctly rounded corners, 
-and there's the notch: the status bar is split either side of a cutout area that houses the front camera, earpiece and other sensors.
-All this impacts how iOS apps are shown on the screen, and how iOS should be built (see also [the Apple website](https://developer.apple.com/ios/update-apps-for-iphone-x/) for more info on this topic).
+and there's the notch: the status bar is split, leaving room for a cutout area that houses the front camera, the earpiece, and other sensors.
+All this impacts how iOS apps are shown on the screen, and how iOS apps should be built (see also [the Apple website](https://developer.apple.com/ios/update-apps-for-iphone-x/) for more info on this topic).
 
 Mendix apps will run out of the box on an iPhone X, but in order to use the full real-estate of the screen, a few customizations are needed.
 This documents explains what needs to be done.<sup>1</sup>
@@ -17,7 +17,7 @@ When building Mendix hybrid apps, there are three main flows to produce the inst
 1. By going through the `Mobile App` flow in the Mendix Portal and selecting `Build in the cloud`
     
     This is generally the fastest and easiest way to build your Mendix hybrid app.
-    Unfortunately, this flow does _not yet_ support the new storyboard images.
+    Unfortunately, this flow does _not_ support the new storyboard images at this moment.
     
 1. By going through the `Mobile App` flow in the Mendix Portal and selecting `Do it yourself` (simple workflow)
 
@@ -35,7 +35,7 @@ When building Mendix hybrid apps, there are three main flows to produce the inst
 Place the new storyboard images (using the filenames outlined below) in the `res/android` or `res/ios` folder of your `phonegap.zip` file.
 
 Remove any `<splash ... />` configuration lines within the `<platform name="ios">` element of `config.xml`.
-Add new configuration lines according to the instructions below.
+Add new configuration lines according to the instructions [here](#single-image-launch-screen) or [here](#multi-image-launch-screen).
 
 Rezip everything, and upload the file to Phonegap Build.
 
@@ -50,7 +50,7 @@ Build a new `phonegap.zip` according to the instructions in the README file, i.e
 
 ## Launch storyboard images
 
-In order to support newer form factors and split-screen/slide-over multitasking, you should use launch storyboard images. These are similar to the legacy launch images above, but there are crucial differences:
+In order to support newer form factors and split-screen/slide-over multitasking, you should use launch [storyboard images](https://developer.apple.com/ios/human-interface-guidelines/icons-and-images/launch-screen/). These are similar to the legacy launch images above, but there are crucial differences:
 
 * images are not specific to a given device.
 * images are scaled to fill the available viewport (while maintaining the aspect ratio).
@@ -61,11 +61,11 @@ In order to support newer form factors and split-screen/slide-over multitasking,
 
 The key to designing a launch storyboard image is understanding that the edges of the image will almost certainly be cropped.
 Therefore, one should not place any important information near the edges of any images provided to the launch storyboard.
-Only the center is a safe area, and this all but guarantees that following Apple's advice of presenting an unpopulated user interface will not work well.
+Only the center is a safe area.
 
-Instead, the following tips should enable you to create a launch image that works across a multitude of form factors, viewports, and orientations:
+Therefore, the following tips should enable you to create a launch image that works across a multitude of form factors, viewports, and orientations:
 
-* Important graphics (logos, icons, titles) should be centered. The safe bounding region will vary, so you will need to test to ensure that the important graphics are never cropped. Better yet, don't supply any important graphics in the first place.
+* Important graphics (logos, icons, titles) should be centered. The safe bounding region will vary, so you will need to test to ensure that the important graphics are never cropped. Better yet, don't use any critical graphics on your launch storyboards in the first place.
     * You _can_ fine-tune the placement and size of these graphics, but you don't have the same fine-grained control as you did with legacy launch images.
 
 * Use a simple color wash. If you use two colors, you'll want one color to fill the top half of the image, and the second to fill the bottom half.  If you use a gradient, you'll probably want to ensure that the middle of the gradient lines up with the center of the image. 
@@ -141,7 +141,7 @@ Because only one image is provided, iOS will utilize it in every context.
 
 ### Multi-image launch screen
 
-If a single launch image won't meet your needs, you will probably need to supply at least six images, if not more. Furthermore, keep in mind that it will not be possible to fine tune the image to a specific device, but only to a device class, display factor, and viewport size.
+If a single launch image won't meet your needs, you will probably need to supply at least six images, if not more. Furthermore, keep in mind that it will not be possible to fine-tune the image to a specific device, but only to a device class, display factor, and viewport size.
 
 If you don't need to target images to a specific idiom, you should create six images, as follows:
 
@@ -180,7 +180,7 @@ or the following in `config/resources.json`:
     { "tag": "splash", "filename": "res/ios/Default@3x~universal~comany.png", "platform": "ios" }
 ```
 
-Should one need to further fine tune based upon device idiom, one can do so. This might look like so:
+Should one need to further fine-tune based upon device idiom, one can do so. This might look like so:
 
 |    scale    |    idiom    |    width    |    height    |    size    |    filename    |
 |:-----------:|:-----------:|:-----------:|:------------:|:----------:|:--------------:|
