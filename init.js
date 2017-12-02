@@ -1,6 +1,9 @@
 const path = require("path");
 const shell = require("shelljs");
 
+// Create build directory
+shell.mkdir("-p", "build");
+
 // Templates
 [
     "src/config.xml.mustache",
