@@ -54,7 +54,7 @@ In order to support newer form factors and split-screen/slide-over multitasking,
 
 * images are not specific to a given device.
 * images are scaled to fill the available viewport (while maintaining the aspect ratio).
-* the outer edges of the images will be cropped, and the amount will vary based on device an viewport.
+* the outer edges of the images will be cropped, and the amount will vary based on device and viewport.
 * there is no need to provide an image for each possible device, viewport, and orientation; iOS will choose the best image for the situation automatically.
 
 ### Designing launch storyboard images
@@ -156,7 +156,7 @@ If you don't need to target images to a specific idiom, you should create six im
 
 \* this image is required in order for iOS utilize the other images within this scale and idiom.
 
-> Note: If the 3x sizes look small too you, that's because there's only one device class that currently has a 3x density: the iPhone 6+/6s+/7+.
+> Note: If the 3x sizes look small to you, that's because there's only one device class that currently has a 3x density: the iPhone 6+/6s+/7+.
 
 The above looks like the following snippet when present in `config.xml`:
 
