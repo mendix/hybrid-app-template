@@ -14,7 +14,16 @@ This project contains the Mendix PhoneGap Build app template. You can use it to
 - debug the app using emulators,
 - build installable packages, either locally or in the cloud using [PhoneGap Build](https://build.phonegap.com).
 
-# Prerequisites
+# Table of Contents
+* [Prerequisites](#prerequisites)
+* [Build on PhoneGap](#build-on-phonegap)
+* [Customize DTAP endpoint](#customize-dtap-endpoint)
+* [App signing](#app-signing)
+* [Build and run locally](#build-run-locally)
+* [Customizing your app](#customize-app)
+* [Troubleshooting](#troubleshooting)
+
+# <a name="prerequisites"></a>Prerequisites
 
 Make sure that the following is installed on your system:
 
@@ -32,7 +41,7 @@ For building locally you also need a development environment for your target pla
   [the instructions](https://developer.android.com/studio/install.html)
 - iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
 
-# Build on PhoneGap
+# <a name="build-on-phonegap"></a>Build on PhoneGap
 
 With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
 the development environment for your target platform. This way you can target iOS without owning an
@@ -69,7 +78,7 @@ $ npm run phonegap:login            # login into the PGB service
 $ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
 ```
 
-# Customize DTAP endpoint
+# <a name="customize-dtap-endpoint"></a>Customize DTAP endpoint
 
 To target a specific DTAP endpoint with your app you can specify it as a parameter to
 `npm run package` or `npm run package:x86`, e.g:
@@ -80,7 +89,7 @@ $ npm run package -- --env.target=test  # target the test endpoint for ARM archi
 Possible targets are `development`, `test`, `acceptance`, `production` (default) and `sandbox`. For
 convencience you can shorten these to the first letter.
 
-# App signing
+# <a name="app-signing"></a>App signing
 
 In case you want to deploy your app on a real device, you will likely need to sign your app.
 Please refer to the appropriate Cordova documentation for details:
@@ -88,7 +97,7 @@ Please refer to the appropriate Cordova documentation for details:
 - [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#signing-an-app)
 - [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
 
-# Build and run locally
+# <a name="build-run-locally"></a>Build and run locally
 
 If this is the initial build, first do some preparation:
 ```
@@ -118,7 +127,7 @@ $ npm run package                   # prepare `build` directory for ARM
 $ npm run start:emulator            # run on emulator, alternatively use start:device
 ```
 
-# Customizing your app
+# <a name="customize-app"></a>Customizing your app
 
 When you first download this project, it is mostly empty. All functionality and styling is by
 default implemented as part of one this project's dependencies, called `mendix-hybrid-app-base`.
@@ -205,3 +214,14 @@ configuration. You can read more about this in the
 Default functionality and styling is implemented in the `mendix-hybrid-app-base` package. We will
 occasionally release updates to this package. You can upgrade the base package by running
 `npm upgrade` from the root of your project.
+
+# <a name="troubleshooting"></a>Troubleshooting
+
+## PIN feature on iOS simulator
+When using the PIN feature while running your app on an iOS simulator, you experience an issue where the
+app will prompt you to setup a PIN every time app is launched. This is due to the underlying way Cordova access the Keychain.
+Either use a device, or enable `Keychain Sharing` in `Capabilities` of your project.
+See [here](https://github.com/Crypho/cordova-plugin-secure-storage/issues/48) for more information.
+
+## iPhone X support
+Please see [here](IPHONEX.md) for the steps to support iPhone X in your app.
