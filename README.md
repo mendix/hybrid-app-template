@@ -124,6 +124,7 @@ Now, build and run the app:
 ```
 $ npm run package:x86               # prepare `build` directory for x86 or
 $ npm run package                   # prepare `build` directory for ARM
+$ npm run prepare:all               # prepare phonegap platform files
 $ npm run start:emulator            # run on emulator, alternatively use start:device
 ```
 

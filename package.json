@@ -11,7 +11,7 @@
     "plugin": "cd build && phonegap plugin",
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
-    "prepare": "cd build && phonegap prepare",
+    "prepare:all": "cd build && phonegap prepare",
     "prepare:android": "cd build && phonegap prepare android",
     "prepare:ios": "cd build && phonegap prepare ios",
     "build": "cd build && phonegap build",
