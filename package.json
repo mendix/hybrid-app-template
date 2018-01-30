@@ -33,23 +33,20 @@
     "lib": "src"
   },
   "files": [
-    "config",
-    "src",
-    "*.js",
-    "yarn.lock",
-    "package-lock.json",
-    "README.md"
+    "/config/**/.gitkeep",
+    "/src/www/scripts/entry.js",
+    "/src/www/styles/custom.css",
+    "/src/**/.gitkeep",
+    "/init.js",
+    "/*.js",
+    "/*.md"
   ],
   "dependencies": {
     "global": "^4.3.2",
-    "mendix-hybrid-app-base": "^1.4.2",
-    "mustache-loader": "^0.4.1"
+    "mendix-hybrid-app-base": "^1.4.2"
   },
   "devDependencies": {
-    "babel-loader": "^7.1.1",
-    "phonegap": "^7.1.0",
     "shelljs": "^0.7.7",
-    "npm": "^5.6.0",
     "webpack": "^3.4.1",
     "webpack-merge": "^4.0.0"
   },
