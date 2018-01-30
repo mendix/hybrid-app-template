@@ -1,6 +1,7 @@
 /build
-/config/*.example
 /dist
 /node_modules
-.yalc/
-yalc.lock
+/.yalc/
+/yalc.lock
+*.example
+
