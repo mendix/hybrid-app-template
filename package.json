@@ -35,7 +35,7 @@
   "files": [
     "/config/**/.gitkeep",
     "/src/www/scripts/entry.js",
-    "/src/www/styles/custom.css",
+    "/src/www/styles/**/*.css[.mustache]",
     "/src/**/.gitkeep",
     "/init.js",
     "/*.js",
@@ -43,7 +43,8 @@
   ],
   "dependencies": {
     "global": "^4.3.2",
-    "mendix-hybrid-app-base": "^1.4.2"
+    "mendix-hybrid-app-base": "file:.yalc/mendix-hybrid-app-base",
+    "mustache-loader": "^1.4.0"
   },
   "devDependencies": {
     "shelljs": "^0.7.7",

@@ -4,11 +4,13 @@ const shell = require("shelljs");
 const CONFIG_FOLDER = 'config';
 const SRC_FOLDER = 'src';
 const WWW_FOLDER = path.join('src', 'www');
+const STYLES_FOLDER = path.join(WWW_FOLDER, 'styles');
 
 const BASE_DEP_FOLDER = path.join('node_modules', 'mendix-hybrid-app-base');
 
 const CONFIG_PATH = path.join(SRC_FOLDER, 'config.xml.mustache');
 const INDEX_PATH = path.join(WWW_FOLDER, 'index.html.mustache');
+const STYLES_PATH = path.join(STYLES_FOLDER, 'index.css.mustache');
 
 // Create build directory
 shell.mkdir("-p", "build");
@@ -16,7 +18,8 @@ shell.mkdir("-p", "build");
 // Copy templates
 [
     CONFIG_PATH,
-    INDEX_PATH
+    INDEX_PATH,
+    STYLES_PATH
 ].forEach(f => {
     shell.cp(path.join(BASE_DEP_FOLDER, f), f + '.example');
 
