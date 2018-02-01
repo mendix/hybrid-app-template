@@ -4,4 +4,4 @@
 /.yalc/
 /yalc.lock
 *.example
-
+.DS_Store
