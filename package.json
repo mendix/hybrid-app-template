@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
+    "fix:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin add cordova-android-support-gradle-release",
     "init": "node init",
     "install": "npm run init",
     "package:x86": "webpack --env.x86",
@@ -12,7 +13,7 @@
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
     "prepare:all": "cd build && phonegap prepare",
-    "prepare:android": "cd build && phonegap prepare android",
+    "prepare:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap prepare android && phonegap plugin add cordova-android-support-gradle-release",
     "prepare:ios": "cd build && phonegap prepare ios",
     "build": "cd build && phonegap build",
     "build:release": "cd build && phonegap build --release",
@@ -43,7 +44,7 @@
   ],
   "dependencies": {
     "global": "^4.3.2",
-    "mendix-hybrid-app-base": "^2.0.0",
+    "mendix-hybrid-app-base": "file:.yalc/mendix-hybrid-app-base",
     "mustache-loader": "^1.4.0"
   },
   "devDependencies": {
