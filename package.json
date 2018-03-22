@@ -13,7 +13,7 @@
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
     "prepare:all": "cd build && phonegap prepare",
-    "prepare:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap prepare android && phonegap plugin add cordova-android-support-gradle-release",
+    "prepare:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin rm cordova-android-play-services-gradle-release && phonegap prepare android && phonegap plugin add cordova-android-support-gradle-release && phonegap plugin add cordova-android-play-services-gradle-release",
     "prepare:ios": "cd build && phonegap prepare ios",
     "build": "cd build && phonegap build",
     "build:release": "cd build && phonegap build --release",
