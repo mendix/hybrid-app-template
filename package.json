@@ -1,6 +1,6 @@
 {
   "name": "mendix-hybrid-app-template",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
     "fix:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin add cordova-android-support-gradle-release",
