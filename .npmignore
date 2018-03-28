@@ -1,3 +1,6 @@
 /.yalc/
 /build/
 /dist/
+/config/**/*.json
+/config/**/*.plist
+/config/**/*.snippet

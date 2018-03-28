@@ -3,7 +3,6 @@
   "version": "2.0.1",
   "description": "Mendix PhoneGap Build app template",
   "scripts": {
-    "fix:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin add cordova-android-support-gradle-release",
     "init": "node init",
     "install": "npm run init",
     "package:x86": "webpack --env.x86",
@@ -13,13 +12,13 @@
     "platform:android": "cd build && phonegap platform add android",
     "platform:ios": "cd build && phonegap platform add ios",
     "prepare:all": "cd build && phonegap prepare",
-    "prepare:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin rm cordova-android-play-services-gradle-release && phonegap prepare android && phonegap plugin add cordova-android-support-gradle-release && phonegap plugin add cordova-android-play-services-gradle-release",
-    "prepare:ios": "cd build && phonegap prepare ios",
+    "prepare:android": "cd build && phonegap plugin rm cordova-android-support-gradle-release && phonegap plugin rm cordova-android-play-services-gradle-release && phonegap prepare android && phonegap plugin add cordova-android-support-gradle-release --variable ANDROID_SUPPORT_VERSION=27.0.0 && phonegap plugin add cordova-android-play-services-gradle-release --variable PLAY_SERVICES_VERSION=11.6.2 && phonegap prepare android",
+    "prepare:ios": "cd build && phonegap prepare ios && cd platforms/ios && pod install",
     "build": "cd build && phonegap build",
     "build:release": "cd build && phonegap build --release",
-    "start": "cd build && phonegap run",
-    "start:emulator": "cd build && phonegap run --emulator",
-    "start:device": "cd build && phonegap run --device",
+    "start": "cd build && phonegap run --noprepare",
+    "start:emulator": "cd build && phonegap run --emulator --noprepare",
+    "start:device": "cd build && phonegap run --device --noprepare",
     "phonegap:login": "cd build && phonegap remote login",
     "phonegap:logout": "cd build && phonegap remote logout",
     "phonegap:build": "cd build && phonegap remote build",
@@ -44,7 +43,7 @@
   ],
   "dependencies": {
     "global": "^4.3.2",
-    "mendix-hybrid-app-base": "^2.0.0",
+    "mendix-hybrid-app-base": "^2.0.3",
     "mustache-loader": "^1.4.0"
   },
   "devDependencies": {
