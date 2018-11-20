@@ -13,7 +13,7 @@
     "platform:ios": "cd build && phonegap platform add ios",
     "prepare:all": "cd build && phonegap prepare",
     "prepare:android": "cd build && phonegap prepare android",
-    "prepare:ios": "cd build && phonegap prepare ios",
+    "prepare:ios": "cd build && phonegap prepare ios && cd platforms/ios && pod install",
     "build": "cd build && phonegap build",
     "build:release": "cd build && phonegap build --release",
     "start": "cd build && phonegap run",
