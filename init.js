@@ -1,5 +1,6 @@
 const path = require("path");
 const shell = require("shelljs");
+const semver = require("semver");
 
 const CONFIG_FOLDER = 'config';
 const SRC_FOLDER = 'src';
@@ -56,20 +57,19 @@ if (matches === undefined) {
 
 let required_phonegap_version = matches[1].trim();
 
-console.log('Required Phonegap version: ' + required_phonegap_version);
+console.log('Required Phonegap CLI version (minimum): ' + required_phonegap_version);
 
 // Determine installed Phonegap CLI version
-if (!shell.which('phonegap')) {
-    shell.echo(`Sorry, this script requires phonegap version ${required_phonegap_version}. Install it using 'npm install -g phonegap@${required_phonegap_version}'.`);
-    shell.exit(1);
+let installed_phonegap_version;
+
+const installed_phonegap_version_path = shell.which('phonegap');
+if (installed_phonegap_version_path) {
+    installed_phonegap_version = shell.exec('phonegap --version', { silent:true }).stdout.trim();
+    console.log('Installed Phonegap CLI version: ' + installed_phonegap_version);
 }
 
-let installed_phonegap_version = shell.exec('phonegap -v', { silent:true }).stdout.trim();
-
-console.log('Installed Phonegap version: ' + installed_phonegap_version);
-
 // Compare Phonegap CLI versions
-if (installed_phonegap_version !== required_phonegap_version) {
-    shell.echo(`Sorry, this script requires phonegap version ${required_phonegap_version}. Install it using 'npm install -g phonegap@${required_phonegap_version}'.`);
+if (!installed_phonegap_version_path || !semver.satisfies(installed_phonegap_version, `^${required_phonegap_version}`)) {
+    shell.echo(`Sorry, this script requires at least Phonegap CLI version ${required_phonegap_version}. Install it using 'npm install -g phonegap@^${required_phonegap_version}'.`);
     shell.exit(1);
 }
