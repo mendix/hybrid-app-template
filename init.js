@@ -7,7 +7,7 @@ const SRC_FOLDER = 'src';
 const WWW_FOLDER = path.join('src', 'www');
 const STYLES_FOLDER = path.join(WWW_FOLDER, 'styles');
 
-const BASE_DEP_FOLDER = path.join('node_modules', 'mendix-hybrid-app-base');
+const BASE_DEP_FOLDER = path.join('node_modules', '@mendix', 'mendix-hybrid-app-base');
 
 const CONFIG_PATH = path.join(SRC_FOLDER, 'config.xml.mustache');
 const INDEX_PATH = path.join(WWW_FOLDER, 'index.html.mustache');
