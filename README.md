@@ -53,7 +53,7 @@ first. After that, you can build your app by uploading a PhoneGap Build package,
 regular `.zip` file containing JavaScript and resource files.
 
 PhoneGap build packages target either ARM (phones and most other devices) which is the default, or
-x86 platforms (emulators and other devices). 
+x86 platforms (emulators and other devices).
 
 ## Through uploading to PhoneGap Build
 
@@ -226,3 +226,28 @@ See [here](https://github.com/Crypho/cordova-plugin-secure-storage/issues/48) fo
 
 ## iPhone X support
 Please see [here](IPHONEX.md) for the steps to support iPhone X in your app.
+
+## Building the Android project locally
+When building your hybrid app locally, the Android build might fail.
+This can have various reasons, but it generally boils down to version mismatches related to Gradle and/or the Android SDK in use.
+
+### No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
+
+In build/platforms/android/build.gradle, replace
+
+`classpath 'com.android.tools.build:gradle:3.0.1'` with `classpath 'com.android.tools.build:gradle:3.1.2'`
+
+and perform a Gradle sync.
+
+### Execution failed for task ':app:processX86DebugResources' (or similar)
+
+```
+AGPBI: {"kind":"error","text":"error: resource android:attr/fontVariationSettings not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+AGPBI: {"kind":"error","text":"error: resource android:attr/ttcIndex not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+```
+
+In build/platforms/android/project.properties, replace
+
+`target=android-27` with `target=android-28`
+
+and perform a Gradle sync.
