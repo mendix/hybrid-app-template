@@ -1,4 +1,4 @@
-var MxApp = require("mendix-hybrid-app-base");
+var MxApp = require("@mendix/mendix-hybrid-app-base");
 
 MxApp.onConfigReady(function(config) {
     // Perform any custom operations on the dojoConfig object here
