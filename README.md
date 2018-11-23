@@ -58,6 +58,7 @@ x86 platforms (emulators and other devices).
 ## Through uploading to PhoneGap Build
 
 To build through the PhoneGap site, first build a PhoneGap Build package:
+
 ```
 $ npm install                       # install dependencies
 $ npm run package                   # create ARM PGB package in `dist` or
@@ -70,6 +71,7 @@ Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/)
 ## Through the command line
 
 To build on PhoneGap Build through the command line:
+
 ```
 $ npm install                       # install dependencies
 $ npm run package                   # prepare `build` directory for ARM or
@@ -100,17 +102,22 @@ Please refer to the appropriate Cordova documentation for details:
 # <a name="build-run-locally"></a>Build and run locally
 
 If this is the initial build, first do some preparation:
+
 ```
 $ npm install                       # install dependencies
-$ npm run package:x86               # prepare `build` directory for x86 or
+
+$ npm run package:x86               # prepare `build` directory for x86, or
 $ npm run package                   # prepare `build` directory for ARM
-$ npm run platform:android          # setup for Android or
+
+$ npm run platform:all              # setup for Android and iOS, or
+$ npm run platform:android          # setup for Android, or
 $ npm run platform:ios              # setup for iOS
 ```
 
 If you cloned the repository or want to change some settings, edit the file `config/parameters.json`
 (create it if necessary). It should at least contain the following properties, with values
 appropriate for your app:
+
 ```json
 {
     "identifier": "io.mxapps.myapp",
@@ -118,13 +125,17 @@ appropriate for your app:
     "url": "https://myapp.mxapps.io"
 }
 ```
+
 For information on further customization, refer to [Customizing your app](#customizing-your-app).
 
 Now, build and run the app:
+
 ```
-$ npm run package:x86               # prepare `build` directory for x86 or
+$ npm run package:x86               # prepare `build` directory for x86, or
 $ npm run package                   # prepare `build` directory for ARM
+
 $ npm run prepare:all               # prepare phonegap platform files
+
 $ npm run start:emulator            # run on emulator, alternatively use start:device
 ```
 
@@ -251,3 +262,19 @@ In build/platforms/android/project.properties, replace
 `target=android-27` with `target=android-28`
 
 and perform a Gradle sync.
+
+### Adding iOS platform fails
+
+When building your app locally, you should add the platforms of your choosing by running:
+
+```
+$ npm run platform:all              # setup for Android and iOS, or
+$ npm run platform:android          # setup for Android, or
+$ npm run platform:ios              # setup for iOS
+```
+
+When Android is your only target, you can choose the second option.
+Unfortunately, this does not work in the case of iOS, because some plugins require the android platform to be present.
+To work around this, you should make sure that the Android platform was added before running npm run package:ios, either by running `npm run platform:all`, or by running `npm run platform:android` beforehand.
+
+ If required, you can later remove the android platform by running `npm run platform -- remove android`.
