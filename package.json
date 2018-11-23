@@ -47,10 +47,10 @@
   "dependencies": {
     "@mendix/mendix-hybrid-app-base": "^3.0.1",
     "global": "^4.3.2",
-    "mustache-loader": "^1.4.0",
-    "semver": "^5.6.0"
+    "mustache-loader": "^1.4.0"
   },
   "devDependencies": {
+    "phonegap": "8.2.2",
     "shelljs": "^0.7.7",
     "webpack": "^3.4.1",
     "webpack-merge": "^4.0.0"
