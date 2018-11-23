@@ -242,6 +242,21 @@ Please see [here](IPHONEX.md) for the steps to support iPhone X in your app.
 When building your hybrid app locally, the Android build might fail.
 This can have various reasons, but it generally boils down to version mismatches related to Gradle and/or the Android SDK in use.
 
+### Missing Gradle installation
+
+```
+Could not find an installed version of Gradle either in Android Studio,
+or on your system to install the gradle wrapper. Please include gradle
+in your path, or install Android Studio
+```
+
+Either
+
+- open the Android project (located in `build/platforms/android`) in Android Studio and accept its suggestion to install the Gradle wrapper; or
+- make sure that Gradle is available on your path, e.g. `export PATH=$PATH:/Users/MyUser/.gradle/wrapper/dists/gradle-4.4-all/xxx/gradle-4.4/bin`.
+
+You can find installation instruction for Gradle on the [Gradle website](https://gradle.org/install/).
+
 ### No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
 
 In build/platforms/android/build.gradle, replace
