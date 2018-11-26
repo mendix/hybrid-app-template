@@ -37,9 +37,12 @@ Make sure that the following is installed on your system:
 
 For building locally you also need a development environment for your target platform:
 
-- Android: [Android Studio](https://developer.android.com/studio/index.html) by following
+- Android
+    - [Android Studio](https://developer.android.com/studio/index.html) by following
   [the instructions](https://developer.android.com/studio/install.html)
-- iOS: [XCode](https://developer.apple.com/xcode/), only available for Apple computers (MacBook, iMac)
+- iOS (only available for Apple computers, e.g. MacBook, iMac)
+    - [XCode](https://developer.apple.com/xcode/)
+    - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html), e.g. by running `sudo gem install cocoapods` (see link for sudo-less install)
 
 # <a name="build-on-phonegap"></a>Build on PhoneGap
 
