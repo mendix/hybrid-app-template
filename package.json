@@ -45,7 +45,7 @@
     "/*.md"
   ],
   "dependencies": {
-    "@mendix/mendix-hybrid-app-base": "^3.0.1",
+    "@mendix/mendix-hybrid-app-base": "^4.0.0",
     "global": "^4.3.2",
     "mustache-loader": "^1.4.0"
   },
