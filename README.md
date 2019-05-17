@@ -316,4 +316,23 @@ If you have disabled the push capability, this step is superfluous.
 This will show up in your logs as `[!] No 'Podfile' found in the project directory`.
 You can safely ignore this error.
 
+### Menu bar is cut off at the bottom (e.g. on iPhone X)
 
+On recent iOS devices, the menu bar (Simple Menu Widget) is not always fully visible.
+To solve this, make the following changes in your styling:
+
+In your app styling:
+
+```
+html, body {
+    height: 100vh; height: 100vh;
+}
+```
+
+In your hybrid app styling:
+
+```
+.mx-hybridapp #content > .mx-page {
+    padding-bottom: env(safe-area-inset-bottom); min-height: 100vh;
+}
+```
