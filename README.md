@@ -77,8 +77,13 @@ To build on PhoneGap Build through the command line:
 
 ```
 $ npm install                       # install dependencies
-$ npm run package                   # prepare `build` directory for ARM or
-$ npm run package:x86               # prepare `build` directory for x86
+
+$ npm run package                   # prepare `build` directory for all architectures, or
+$ npm run package:x86               # prepare `build` directory for x86, or
+$ npm run package:x86_64            # prepare `build` directory for x86_64, or
+$ npm run package:arm               # prepare `build` directory for arm, or
+$ npm run package:arm64             # prepare `build` directory for arm64
+
 $ npm run phonegap:login            # login into the PGB service
 $ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:build:ios`
 ```
@@ -109,8 +114,11 @@ If this is the initial build, first do some preparation:
 ```
 $ npm install                       # install dependencies
 
+$ npm run package                   # prepare `build` directory for all architectures, or
 $ npm run package:x86               # prepare `build` directory for x86, or
-$ npm run package                   # prepare `build` directory for ARM
+$ npm run package:x86_64            # prepare `build` directory for x86_64, or
+$ npm run package:arm               # prepare `build` directory for arm, or
+$ npm run package:arm64             # prepare `build` directory for arm64
 
 $ npm run platform:all              # setup for Android and iOS, or
 $ npm run platform:android          # setup for Android, or
@@ -134,8 +142,11 @@ For information on further customization, refer to [Customizing your app](#custo
 Now, build and run the app:
 
 ```
+$ npm run package                   # prepare `build` directory for all architectures, or
 $ npm run package:x86               # prepare `build` directory for x86, or
-$ npm run package                   # prepare `build` directory for ARM
+$ npm run package:x86_64            # prepare `build` directory for x86_64, or
+$ npm run package:arm               # prepare `build` directory for arm, or
+$ npm run package:arm64             # prepare `build` directory for arm64
 
 $ npm run prepare:all               # prepare phonegap platform files
 
