@@ -34,6 +34,7 @@ Make sure that the following is installed on your system:
     - Windows: install from [nodejs.org](https://nodejs.org/en/download/)
     - MacOS: use [Brew](https://brew.sh/) to install `Node.js`: `brew install node`
     - Linux, BSD, etc: install using the available package manager, e.g. on Debian: `sudo apt-get install node`
+- Java version 8
 
 For building locally you also need a development environment for your target platform:
 
@@ -109,6 +110,9 @@ Please refer to the appropriate Cordova documentation for details:
 
 # <a name="build-run-locally"></a>Build and run locally
 
+**Make sure you have `CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL` in your system path** 
+>`CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=https://services.gradle.org/distributions/gradle-4.10.1-all.zip` .
+
 If this is the initial build, first do some preparation:
 
 ```
@@ -150,8 +154,26 @@ $ npm run package:arm64             # prepare `build` directory for arm64
 
 $ npm run prepare:all               # prepare phonegap platform files
 
-$ npm run start:emulator            # run on emulator, alternatively use start:device
+if you have iOS enabled, since Xcode10 we have to pass buildFlag
+$ npm run build -- --buildFlag='-UseModernBuildSystem=0'
+
+Otherwise               
+$ npm run build               
 ```
+
+Build will generate necessary Android and IOS files in order to run the project.
+
+Make sure you checkout the [Trouble Shooting Section](#troubleshooting) 
+
+##### For best experience open each platform project on their native IDE (Android studio for android, Xcode for IOS):
+
+###### IOS
+- Open ./build/platforms/ios/yourAppName.xcworkspace from your Xcode
+- Run the app on desired simulator
+
+###### Android
+- Open ./build/platforms/android/ in Android Studio
+- Run the app on desired simulator
 
 # <a name="customize-app"></a>Customizing your app
 
@@ -291,6 +313,28 @@ In build/platforms/android/project.properties, replace
 `target=android-27` with `target=android-28`
 
 and perform a Gradle sync.
+
+### Failed to load resource: net::ERR_CLEARTEXT_NOT_PERMITTED
+
+Starting with Android 9 (API level 28), cleartext support is disabled by default. In order to fix this:
+
+In `src/config.xml.mustache` add this *attribute* `xmlns:android="http://schemas.android.com/apk/res/android"` to your widget tag at the beginning of the file. So it must be look like
+
+```
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "{{identifier}}"
+        version   = "{{version}}" 
+        xmlns:android="http://schemas.android.com/apk/res/android">
+```
+
+And add this element inside of `<platform name="android">`
+
+```
+<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+  <application android:usesCleartextTraffic="true" />
+</edit-config>
+``` 
 
 ### Adding iOS platform fails
 
