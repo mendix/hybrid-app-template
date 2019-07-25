@@ -110,9 +110,6 @@ Please refer to the appropriate Cordova documentation for details:
 
 # <a name="build-run-locally"></a>Build and run locally
 
-**Make sure you have `CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL` in your system path** 
->`CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=https://services.gradle.org/distributions/gradle-4.10.1-all.zip` .
-
 If this is the initial build, first do some preparation:
 
 ```
@@ -154,10 +151,6 @@ $ npm run package:arm64             # prepare `build` directory for arm64
 
 $ npm run prepare:all               # prepare phonegap platform files
 
-if you have iOS enabled, since Xcode10 we have to pass buildFlag
-$ npm run build -- --buildFlag='-UseModernBuildSystem=0'
-
-Otherwise               
 $ npm run build               
 ```
 
@@ -168,11 +161,11 @@ Make sure you checkout the [Trouble Shooting Section](#troubleshooting)
 ##### For best experience open each platform project on their native IDE (Android studio for android, Xcode for IOS):
 
 ###### IOS
-- Open ./build/platforms/ios/yourAppName.xcworkspace from your Xcode
+- Open `./build/platforms/ios/yourAppName.xcworkspace` from your Xcode
 - Run the app on desired simulator
 
 ###### Android
-- Open ./build/platforms/android/ in Android Studio
+- Open `./build/platforms/android/` in Android Studio
 - Run the app on desired simulator
 
 # <a name="customize-app"></a>Customizing your app
@@ -293,6 +286,14 @@ Either
 
 You can find installation instruction for Gradle on the [Gradle website](https://gradle.org/install/).
 
+### Minimum supported Gradle version is x.x.x. Current version is x.x.x. If using the gradle wrapper, try editing the distributionUrl
+
+Make sure you are have `CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL` in your path or export it to particular terminal session with correct distribution enabled eg:
+
+>CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=https://services.gradle.org/distributions/gradle-x.x.x-all.zip
+
+Bear in mind that other Cordova projects you have might also effected by this change.
+
 ### No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
 
 In build/platforms/android/build.gradle, replace
@@ -304,8 +305,8 @@ and perform a Gradle sync.
 ### Execution failed for task ':app:processX86DebugResources' (or similar)
 
 ```
-AGPBI: {"kind":"error","text":"error: resource android:attr/fontVariationSettings not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
-AGPBI: {"kind":"error","text":"error: resource android:attr/ttcIndex not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+AGPBI: {"kind":"error","text":"error: resource android:attr/fontVariationSettings not found.","sources":[{"file":"/Users/UserName/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+AGPBI: {"kind":"error","text":"error: resource android:attr/ttcIndex not found.","sources":[{"file":"/Users/UserName/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
 ```
 
 In build/platforms/android/project.properties, replace
@@ -314,27 +315,19 @@ In build/platforms/android/project.properties, replace
 
 and perform a Gradle sync.
 
-### Failed to load resource: net::ERR_CLEARTEXT_NOT_PERMITTED
-
-Starting with Android 9 (API level 28), cleartext support is disabled by default. In order to fix this:
-
-In `src/config.xml.mustache` add this *attribute* `xmlns:android="http://schemas.android.com/apk/res/android"` to your widget tag at the beginning of the file. So it must be look like
-
-```
-<widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "{{identifier}}"
-        version   = "{{version}}" 
-        xmlns:android="http://schemas.android.com/apk/res/android">
-```
-
-And add this element inside of `<platform name="android">`
+In case you build against localhost you might have to add this element:
 
 ```
 <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
   <application android:usesCleartextTraffic="true" />
 </edit-config>
 ``` 
+
+inside of `<platform name="android">`
+
+in `src/config.xml.mustache`
+
+Bear in mind that this config allows http requests and it shouldn't be in your production build.
 
 ### Adding iOS platform fails
 
