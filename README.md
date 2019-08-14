@@ -336,3 +336,7 @@ In your hybrid app styling:
     padding-bottom: env(safe-area-inset-bottom); min-height: 100vh;
 }
 ```
+
+### Failed iOS build with Missing or Invalid 'Team' configuration
+
+This can be circumvented by opening the `.xcworkspace` project located in the `build/platforms/ios` directory with XCode and configuring the Development team in the project settings.
