@@ -292,7 +292,7 @@ Make sure you are have `CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL` in your path or
 
 >CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=https://services.gradle.org/distributions/gradle-x.x.x-all.zip
 
-Bear in mind that other Cordova projects you have might also effected by this change.
+Bear in mind that other Cordova projects would also be effected by this change.
 
 ### No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
 
