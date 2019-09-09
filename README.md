@@ -34,6 +34,7 @@ Make sure that the following is installed on your system:
     - Windows: install from [nodejs.org](https://nodejs.org/en/download/)
     - MacOS: use [Brew](https://brew.sh/) to install `Node.js`: `brew install node`
     - Linux, BSD, etc: install using the available package manager, e.g. on Debian: `sudo apt-get install node`
+- Java version 8
 
 For building locally you also need a development environment for your target platform:
 
@@ -150,8 +151,22 @@ $ npm run package:arm64             # prepare `build` directory for arm64
 
 $ npm run prepare:all               # prepare phonegap platform files
 
-$ npm run start:emulator            # run on emulator, alternatively use start:device
+$ npm run build               
 ```
+
+Build will generate necessary Android and IOS files in order to run the project.
+
+Make sure you checkout the [Trouble Shooting Section](#troubleshooting) 
+
+##### For best experience open each platform project on their native IDE (Android studio for android, Xcode for IOS):
+
+###### IOS
+- Open `./build/platforms/ios/yourAppName.xcworkspace` from your Xcode
+- Run the app on desired simulator
+
+###### Android
+- Open `./build/platforms/android/` in Android Studio
+- Run the app on desired simulator
 
 # <a name="customize-app"></a>Customizing your app
 
@@ -271,6 +286,14 @@ Either
 
 You can find installation instruction for Gradle on the [Gradle website](https://gradle.org/install/).
 
+### Minimum supported Gradle version is x.x.x. Current version is x.x.x. If using the gradle wrapper, try editing the distributionUrl
+
+Make sure you are have `CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL` in your path or export it to particular terminal session with correct distribution enabled eg:
+
+>CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=https://services.gradle.org/distributions/gradle-x.x.x-all.zip
+
+Bear in mind that other Cordova projects would also be effected by this change.
+
 ### No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
 
 In build/platforms/android/build.gradle, replace
@@ -282,8 +305,8 @@ and perform a Gradle sync.
 ### Execution failed for task ':app:processX86DebugResources' (or similar)
 
 ```
-AGPBI: {"kind":"error","text":"error: resource android:attr/fontVariationSettings not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
-AGPBI: {"kind":"error","text":"error: resource android:attr/ttcIndex not found.","sources":[{"file":"/Users/Kevin/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+AGPBI: {"kind":"error","text":"error: resource android:attr/fontVariationSettings not found.","sources":[{"file":"/Users/UserName/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
+AGPBI: {"kind":"error","text":"error: resource android:attr/ttcIndex not found.","sources":[{"file":"/Users/UserName/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/4abf4d56829ea1da7befcfae3c8fd6c7/res/values/values.xml","position":{"startLine":132,"startColumn":4,"startOffset":7725,"endColumn":69,"endOffset":7790}}],"original":"","tool":"AAPT"}
 ```
 
 In build/platforms/android/project.properties, replace
@@ -291,6 +314,20 @@ In build/platforms/android/project.properties, replace
 `target=android-27` with `target=android-28`
 
 and perform a Gradle sync.
+
+In case you build against localhost you might have to add this element:
+
+```
+<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+  <application android:usesCleartextTraffic="true" />
+</edit-config>
+``` 
+
+inside of `<platform name="android">`
+
+in `src/config.xml.mustache`
+
+Bear in mind that this config allows http requests and it shouldn't be in your production build.
 
 ### Adding iOS platform fails
 
