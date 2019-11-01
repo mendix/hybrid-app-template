@@ -315,7 +315,10 @@ In build/platforms/android/project.properties, replace
 
 and perform a Gradle sync.
 
-In case you build against localhost you might have to add this element:
+### Localhost 
+In case you build against localhost your app might not able to run, and throw an error: `Failed to load resource: net::ERR_CLEARTEXT_NOT_PERMITTED`.
+
+You might have to add this element:
 
 ```
 <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
