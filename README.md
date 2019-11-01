@@ -330,6 +330,19 @@ in `src/config.xml.mustache`
 
 Bear in mind that this config allows http requests and it shouldn't be in your production build.
 
+### No installed build tools found. Install the Android build tools version 19.1.0 or higher.
+Even when Android Studio is installed, you might need to install to build tools separately
+
+1. Launch Android Studio. Then go to *Preferences -> Appearance & Behavior -> System SEttings -> Android SDK*. You will find `Android SDK Location`. For example `/Users/${user_name}/Library/Android/sdk`.
+
+2. Go to `SDK tools` tab and check `show package details`. `Android SDK build tools` will be there. Please make sure Android SDK build tools 19.1.0 or higher is installed.
+
+3. (For iOS) Edit .bash_profile, and set ANDROID_HOME as "Android SDK Location" which you found in the Android Studio.
+    ```
+    ANDROID_HOME=/Users/${user_name}/Library/Android/sdk
+    export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+    ```
+
 ### Adding iOS platform fails
 
 When building your app locally, you should add the platforms of your choosing by running:
