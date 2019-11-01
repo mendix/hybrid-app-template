@@ -90,9 +90,7 @@ $ npm run phonegap:build:android    # build on PGB, alternatively use `phonegap:
 ```
 
 # <a name="customize-dtap-endpoint"></a>Customize DTAP endpoint
-
-To target a specific DTAP endpoint with your app you can specify it as a parameter to
-`npm run package` or `npm run package:x86`, e.g:
+Various environments can be set in the `config/environments.json` file. To target a specific DTAP endpoint with your app you can specify it as a parameter to `npm run package` or `npm run package:x86`, e.g:
 ```
 $ npm run package -- --env.target=test  # target the test endpoint for ARM architecture
 ```
