@@ -339,11 +339,19 @@ Even when Android Studio is installed, you might need to install to build tools 
 
 2. Go to `SDK tools` tab and check `show package details`. `Android SDK build tools` will be there. Please make sure Android SDK build tools 19.1.0 or higher is installed.
 
-3. (For iOS) Edit .bash_profile, and set ANDROID_HOME as "Android SDK Location" which you found in the Android Studio.
+3. For MacOS: Edit *~/.bash_profile*, and set ANDROID_HOME as "Android SDK Location" which you found in the Android Studio.
     ```
-    ANDROID_HOME=/Users/${user_name}/Library/Android/sdk
+    export ANDROID_HOME=/Users/${user_name}/Library/Android/sdk
     export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
     ```
+    For Windows: Edit `Environment Variables`, Add entries for the relevant locations to the PATH. For example (substitute the paths with your local Android SDK installation's location):
+    ```
+    C:\Users\[your user]\AppData\Local\Android\Sdk\platform-tools
+    C:\Users\[your user]\AppData\Local\Android\Sdk\tools
+    ```
+    
+See Cordova guide: [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html) or [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)
+
 
 ### Adding iOS platform fails
 
