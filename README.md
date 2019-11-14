@@ -160,6 +160,7 @@ Make sure you checkout the [Trouble Shooting Section](#troubleshooting)
 
 ###### IOS
 - Open `./build/platforms/ios/yourAppName.xcworkspace` from your Xcode
+- In recent version of Xcode you might need to set the build system; *File > Project Settings*. Set the Shared or per-user project settings: the `Build system` to `Legacy Build Systems`.
 - Run the app on desired simulator
 
 ###### Android
