@@ -376,6 +376,10 @@ If you have disabled the push capability, this step is superfluous.
 This will show up in your logs as `[!] No 'Podfile' found in the project directory`.
 You can safely ignore this error.
 
+### Xcode error `A valid provisioning profile for this executable was not found`
+When Xcode fails to intall on the a device, with the `A valid provisioning profile for this executable was not found` it could be cause ne the build system. In recent version of Xcode you might need to set the build system; *File > Project Settings*. Set the Shared or per-user project settings: the `Build system` to `Legacy Build Systems`.
+
+
 ### Menu bar is cut off at the bottom (e.g. on iPhone X)
 
 On recent iOS devices, the menu bar (Simple Menu Widget) is not always fully visible.
