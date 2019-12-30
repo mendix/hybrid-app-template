@@ -1,5 +1,9 @@
 var MxApp = require("@mendix/mendix-hybrid-app-base");
 
+MxApp.onBeforeSynchonization(async function() {
+    // Perform any custom operations on before synchronization here
+});
+
 MxApp.onConfigReady(function(config) {
     // Perform any custom operations on the dojoConfig object here
 });
