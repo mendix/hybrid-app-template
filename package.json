@@ -10,6 +10,7 @@
     "plugin": "npm run phonegap -- plugin",
     "platform": "npm run phonegap -- platform",
     "build": "npm run phonegap -- build",
+    "build:ios": "npm run phonegap -- build ios",
     "start": "npm run phonegap -- run",
     "package:x86": "npm run package -- --env.x86",
     "package:x86_64": "npm run package -- --env.x86_64",
@@ -27,9 +28,7 @@
     "start:device": "npm run start -- --device",
     "phonegap:login": "npm run phonegap -- remote login",
     "phonegap:logout": "npm run phonegap -- remote logout",
-    "phonegap:build": "npm run phonegap -- remote build",
     "phonegap:build:android": "npm run phonegap -- remote build android",
-    "phonegap:build:ios": "npm run phonegap -- remote build ios",
     "phonegap:start": "npm run phonegap -- remote run",
     "phonegap:start:android": "npm run phonegap -- remote run android",
     "phonegap:start:ios": "npm run phonegap -- remote run ios"

@@ -47,10 +47,15 @@ For building locally you also need a development environment for your target pla
 
 # <a name="build-on-phonegap"></a>Build on PhoneGap
 
+<aside class="warning">
+From 30th April 2020 Apple will stop support apps built with an older SDK. 
+
+As PhoneGap Build is in maintenance mode and will not support SDK 13 or later,
+to be able to release your iOS apps after the deadline, please refer to the [Build and run locally](#build-run-locally) section.
+</aside>
+
 With the PhoneGap Build service you can build your app in the cloud, even if you haven't installed
-the development environment for your target platform. This way you can target iOS without owning an
-Apple computer. You still need an Apple developer account, provisioning profile and signing key. See
-the [PhoneGap site](http://docs.phonegap.com/phonegap-build/signing/ios/) for more details.
+the development environment for your target platform.
 
 To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
 first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
@@ -107,6 +112,20 @@ Please refer to the appropriate Cordova documentation for details:
 - [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#signing-an-app)
 
 # <a name="build-run-locally"></a>Build and run locally
+
+<aside class="notice">
+To build the iOS flavor of your app you will need a Mac. This a limitation of the tools required for building iOS apps.
+</aside>
+
+## Prerequisites for iOS builds
+- XCode and Command line tools installed.
+  XCode can be installed from the App Store.
+- [NodeJS LTS](https://nodejs.org/en/) installed. 
+
+## Prerequisites for Android builds
+- Node LTS installed. It can be donwloaded from [here](https://nodejs.org/en/)
+
+## Setup and build
 
 If this is the initial build, first do some preparation:
 
