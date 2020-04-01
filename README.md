@@ -368,14 +368,6 @@ To work around this, you should make sure that the Android platform was added be
 
 If required, you can later remove the android platform by running `npm run platform -- remove android`.
 
-### No 'Podfile' found in the project directory
-
-The Push Notifications plugin requires some additional components, which are installed through CocoaPods.
-To trigger this installation, we always call `pod install` as part of the `platform` and `prepare` commands.
-If you have disabled the push capability, this step is superfluous.
-This will show up in your logs as `[!] No 'Podfile' found in the project directory`.
-You can safely ignore this error.
-
 ### Menu bar is cut off at the bottom (e.g. on iPhone X)
 
 On recent iOS devices, the menu bar (Simple Menu Widget) is not always fully visible.
