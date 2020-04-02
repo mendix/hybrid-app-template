@@ -47,6 +47,12 @@ For building locally you also need a development environment for your target pla
 
 # <a name="build-on-phonegap"></a>Build on PhoneGap
 
+<aside class="warning">
+Building in the cloud uses the Phonegap Build service from Adobe. Unfortunately, Adobe no longer maintains this service. As a result, as of April 30th 2020, iOS apps built through the platform or via the Phonegap Build service are not being accepted on Apple's App Store.
+
+If you wish to build your iOS app, continue with te [Build and run locally](#build-run-locally) section.
+</aside>
+
 With the PhoneGap Build service you can build your Android apps in the cloud. 
 
 To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
