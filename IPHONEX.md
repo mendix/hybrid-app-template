@@ -12,41 +12,14 @@ This documents explains what needs to be done.<sup>1</sup>
 
 ## Configuring storyboard images in your Mendix hybrid app
 
-When building Mendix hybrid apps, there are three main flows to produce the installable package:
+When building Mendix hybrid apps for the Apple Store, it is first required to obtain the package from the Mendix Portal by selecting `Do it yourself`. This provides you with a .zip file that contains everything you need to build a Mendix hybrid app.
 
-1. By going through the `Mobile App` flow in the Mendix Portal and selecting `Build in the cloud`
-    
-    This is generally the fastest and easiest way to build your Mendix hybrid app.
-    Unfortunately, this flow does _not_ support the new storyboard images at this moment.
-    
-1. By going through the `Mobile App` flow in the Mendix Portal and selecting `Do it yourself` (simple workflow)
-
-    This provides you with a .zip file that contains everything you need to build a Mendix hybrid app.
-    In this workflow, we change the `config.xml` file in `./dist/phonegap.zip` directly.
-    This does not require any tooling, apart from a text editor.
-
-1. By going through the `Mobile App` flow in the Mendix Portal and selecting `Do it yourself` (advanced workflow)
-
-    An alternative approach is to make the changes in `config/resources.json`, and to follow the instructions in the `README.md` file to create a new `phonegap.zip`.
-    This approach is more complex, but allows for the most flexibility and customizations.
-
-### Configure the storyboard images using the simple workflow
-
-Place the new storyboard images (using the filenames outlined below) in the `res/ios` folder of your `phonegap.zip` file.
-
-Remove any `<splash ... />` configuration lines within the `<platform name="ios">` element of `config.xml`.
-Add new configuration lines according to the instructions [here](#single-image-launch-screen) or [here](#multi-image-launch-screen).
-
-Rezip everything, and upload the file to Phonegap Build.
-
-### Configure the storyboard images using the advanced workflow
-
-Place the new storyboard images (using the filenames outlined below) in the `src/resources/ios` folder of your hybrid project folder (the folder in which the file you're currently reading resides).
+Once downloaded and extracted, place the new storyboard images (using the filenames outlined below) in the `src/resources/ios` folder of your hybrid project folder (the folder in which the file you're currently reading resides).
 
 Remove any `{"tag": "splash",` configuration lines within the `"iosImages"` element of `config/resources.json`.
 Add new configuration lines according to the instructions below.
 
-Build a new `phonegap.zip` according to the instructions in the README file, i.e. by running `npm run package`.
+Build the iOS application according to the instructions in the README file, i.e. by running `npm run package && npm run platform:ios`.
 
 ## Launch storyboard images
 
