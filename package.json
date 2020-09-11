@@ -25,14 +25,7 @@
     "prepare:ios": "npm run phonegap -- prepare ios && cd build/platforms/ios",
     "build:release": "npm run build -- --release",
     "start:emulator": "npm run start -- --emulator",
-    "start:device": "npm run start -- --device",
-    "phonegap:login": "npm run phonegap -- remote login",
-    "phonegap:logout": "npm run phonegap -- remote logout",
-    "phonegap:build": "npm run phonegap -- remote build",
-    "phonegap:build:android": "npm run phonegap -- remote build android",
-    "phonegap:start": "npm run phonegap -- remote run",
-    "phonegap:start:android": "npm run phonegap -- remote run android",
-    "phonegap:start:ios": "npm run phonegap -- remote run ios"
+    "start:device": "npm run start -- --device"
   },
   "main": "src/www/scripts/entry.js",
   "directories": {

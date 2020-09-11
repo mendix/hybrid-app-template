@@ -12,11 +12,10 @@ This project contains the Mendix PhoneGap Build app template. You can use it to
 - customize your mobile Mendix app: styling, icons, splash screens and code,
 - open the platform specific code inside the appropriate IDEs,
 - debug the app using emulators,
-- build installable packages, either locally or in the cloud (Android-only) using [PhoneGap Build](https://build.phonegap.com).
+- build installable packages, either locally
 
 # Table of Contents
 * [Prerequisites](#prerequisites)
-* [Build on PhoneGap](#build-on-phonegap)
 * [Customize DTAP endpoint](#customize-dtap-endpoint)
 * [App signing](#app-signing)
 * [Build and run locally](#build-run-locally)
@@ -44,53 +43,6 @@ For building locally you also need a development environment for your target pla
 - iOS (only available for Apple computers, e.g. MacBook, iMac)
     - [XCode](https://developer.apple.com/xcode/)
     - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html), e.g. by running `sudo gem install cocoapods` (see link for sudo-less install)
-
-# <a name="build-on-phonegap"></a>Build on PhoneGap
-
-<aside class="warning">
-Building in the cloud uses the Phonegap Build service from Adobe. Unfortunately, Adobe no longer maintains this service. As a result, as of April 30th 2020, iOS apps built through the platform or via the Phonegap Build service are not being accepted on Apple's App Store.
-
-If you wish to build your iOS app, continue with te [Build and run locally](#build-run-locally) section.
-</aside>
-
-With the PhoneGap Build service you can build your Android apps in the cloud. 
-
-To use the PhoneGap Build service you need to [register for an account](https://build.phonegap.com/plans)
-first. After that, you can build your app by uploading a PhoneGap Build package, which is just a
-regular `.zip` file containing JavaScript and resource files.
-
-PhoneGap build packages target either ARM (phones and most other devices) which is the default, or
-x86 platforms (emulators and other devices).
-
-## Through uploading to PhoneGap Build
-
-To build through the PhoneGap site, first build a PhoneGap Build package:
-
-```
-$ npm install                       # install dependencies
-$ npm run package                   # create ARM PGB package in `dist` or
-$ npm run package:x86               # create x86 PGB package in `dist`
-```
-
-Then, go to [https://build.phonegap.com/apps/](https://build.phonegap.com/apps/) and click the
-`+ new app` button. When asked, upload the PhoneGap Build package from the `dist` folder.
-
-## Through the command line
-
-To build on PhoneGap Build through the command line:
-
-```
-$ npm install                       # install dependencies
-
-$ npm run package                   # prepare `build` directory for all architectures, or
-$ npm run package:x86               # prepare `build` directory for x86, or
-$ npm run package:x86_64            # prepare `build` directory for x86_64, or
-$ npm run package:arm               # prepare `build` directory for arm, or
-$ npm run package:arm64             # prepare `build` directory for arm64
-
-$ npm run phonegap:login            # login into the PGB service
-$ npm run phonegap:build:android    # build on PGB
-```
 
 # <a name="customize-dtap-endpoint"></a>Customize DTAP endpoint
 Various environments can be set in the `config/environments.json` file. To target a specific DTAP endpoint with your app you can specify it as a parameter to `npm run package` or `npm run package:x86`, e.g:
