@@ -1,3 +1,6 @@
+# Important
+#### For support related questions regarding Mendix Hybrid please contact [Mendix support](https://support.mendix.com)
+
 # Mendix PhoneGap Build App Template
 
 Mendix apps can simply be viewed in mobile web browsers. However, some features of mobile devices
