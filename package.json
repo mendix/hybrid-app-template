@@ -18,10 +18,6 @@
     "package:watch": "npm run package -- --watch",
     "platform:android": "cd build && cordova platform add android",
     "platform:ios": "cd build && cordova platform add ios",
-    "platform:all": "run-s platform:android platform:ios",
-    "prepare:all": "run-s prepare:android prepare:ios",
-    "prepare:android": "npm run cordova -- prepare android",
-    "prepare:ios": "npm run cordova -- prepare ios && cd build/platforms/ios",
     "build:release": "npm run build -- --release",
     "start:emulator": "npm run start -- --emulator",
     "start:device": "npm run start -- --device"
