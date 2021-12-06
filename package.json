@@ -18,8 +18,8 @@
     "package:watch": "npm run package -- --watch",
     "platform:android": "cd build && cordova platform add android",
     "platform:ios": "cd build && cordova platform add ios",
-    "platform:all": "npm run platform:android && npm run platform:ios",
-    "prepare:all": "npm run prepare:android && npm run prepare:ios",
+    "platform:all": "run-s platform:android platform:ios",
+    "prepare:all": "run-s prepare:android prepare:ios",
     "prepare:android": "npm run cordova -- prepare android",
     "prepare:ios": "npm run cordova -- prepare ios && cd build/platforms/ios",
     "build:release": "npm run build -- --release",
@@ -40,10 +40,11 @@
     "/*.md"
   ],
   "devDependencies": {
-    "@mendix/mendix-hybrid-app-base": "^6.0.0-alpha.0",
+    "@mendix/mendix-hybrid-app-base": "^6.0.0-alpha.2",
     "cordova": "^9.0.0",
     "global": "^4.4.0",
     "mustache-loader": "^1.4.3",
+    "npm-run-all": "^4.1.5",
     "shelljs": "^0.8.4",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.9.1",
