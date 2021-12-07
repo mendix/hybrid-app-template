@@ -1,11 +1,11 @@
-var MxApp = require("@mendix/mendix-hybrid-app-base");
+import MxApp from "@mendix/mendix-hybrid-app-base";
 
-MxApp.onConfigReady(function(config) {
-    // Perform any custom operations on the dojoConfig object here
+MxApp.onConfigReady(function (config) {
+  // Perform any custom operations on the dojoConfig object here
 });
 
-MxApp.onClientReady(function(mx) {
-    // Perform any custom operations on the Mendix client object here
+MxApp.onClientReady(function (mx) {
+  // Perform any custom operations on the Mendix client object here
 });
 
 // Uncomment this function if you would like to control when app updates are performed
