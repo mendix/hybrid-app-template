@@ -105,8 +105,7 @@ $ npm run package:x86_64            # prepare `build` directory for x86_64, or
 $ npm run package:arm               # prepare `build` directory for arm, or
 $ npm run package:arm64             # prepare `build` directory for arm64
 
-$ npm run prepare:all               # prepare phonegap platform files
-
+$ npm run platform:all              # setup for Android and iOS, or
 $ npm run build               
 ```
 

@@ -1,4 +1,4 @@
-var webpack_merge = require('webpack-merge');
+var { merge: webpack_merge } = require('webpack-merge');
 
 var base_config = require("@mendix/mendix-hybrid-app-base/webpack.config");
 
