@@ -20,5 +20,7 @@ if (existsSync(location)) {
             inLoop = false
         }
     }
-    writeFileSync(location, newFileContent);
+    if (newFileContent.length > 0) {
+        writeFileSync(location, newFileContent);
+    }
 }
