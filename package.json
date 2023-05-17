@@ -1,6 +1,6 @@
 {
   "name": "@mendix/mendix-hybrid-app-template",
-  "version": "6.0.0-alpha.0",
+  "version": "6.0.0",
   "description": "Mendix hybrid app template",
   "scripts": {
     "init": "node init",
@@ -17,7 +17,8 @@
     "package:arm64": "npm run package -- --env.arm64",
     "package:watch": "npm run package -- --watch",
     "platform:all": "run-p platform:android platform:ios",
-    "platform:android": "cd build && cordova platform add android",
+    "platform:android": "cd build && cordova platform add android@11",
+    "postplatform:android": "node ./scripts/fixAndroidManifest.js && node ./scripts/fixBarcodeScanner.js && node ./scripts/fixFileProvider.js",
     "platform:ios": "cd build && cordova platform add ios",
     "prepare:all": "npm run prepare:android && npm run prepare:ios",
     "prepare:android": "run-s clean:platform:android platform:android",
@@ -42,14 +43,14 @@
     "/*.md"
   ],
   "devDependencies": {
-    "@mendix/mendix-hybrid-app-base": "^6.0.0-alpha.6",
-    "cordova": "^10.0.0",
+    "@mendix/mendix-hybrid-app-base": "^6.0.0",
+    "cordova": "^11.1.0",
     "global": "^4.4.0",
     "mustache-loader": "^1.4.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "shelljs": "^0.8.4",
-    "webpack": "^5.33.2",
+    "shelljs": "^0.8.5",
+    "webpack": "^5.80.0",
     "webpack-cli": "^4.9.1",
     "webpack-merge": "^5.7.3"
   },
@@ -59,8 +60,8 @@
   },
   "license": "Apache-2.0",
   "author": {
-    "name": "Kevin Vlaanderen",
-    "email": "kevin.vlaanderen@mendix.com",
-    "url": "https://developer.mendixcloud.com/link/profile/15218"
+    "name": "Mendix",
+    "email": "support@mendix.com",
+    "url": "https://support.mendix.com"
   }
 }
