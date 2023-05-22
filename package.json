@@ -40,7 +40,8 @@
     "/src/**/.gitkeep",
     "/init.js",
     "/*.js",
-    "/*.md"
+    "/*.md",
+    "scripts/*.js"
   ],
   "devDependencies": {
     "@mendix/mendix-hybrid-app-base": "^6.0.0",
