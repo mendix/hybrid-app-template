@@ -47,6 +47,10 @@ For building locally you also need a development environment for your target pla
     - [XCode](https://developer.apple.com/xcode/)
     - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html), e.g. by running `sudo gem install cocoapods` (see link for sudo-less install)
 
+Make sure that the following changes are applied:
+- To customize the runtime behavior, include the following configuration: Set [com.mendix.core.SameSiteCookies](https://docs.mendix.com/refguide/custom-settings/#commendixcoreSameSiteCookies) to `None` in Studio Pro.
+- Deploy and test the application using HTTPS.
+
 # <a name="customize-dtap-endpoint"></a>Customize DTAP endpoint
 Various environments can be set in the `config/environments.json` file. To target a specific DTAP endpoint with your app you can specify it as a parameter to `npm run package` or `npm run package:x86`, e.g:
 ```
