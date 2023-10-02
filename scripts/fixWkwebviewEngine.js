@@ -16,6 +16,7 @@ function addWkwebviewEnginePlugin() {
     const lineSeperator = "\n";
     const fileContent = readFileSync(location, "utf-8");
     const fileContentLines = fileContent.split(lineSeperator);
+    //Searches the location of the package comment in the config.xml, and adds the package to the previous location of package.
     const indexOfComment = fileContentLines.findIndex((val)=>val.includes(pluginName))
     fileContentLines[indexOfComment+1] += pluginTagString
     
