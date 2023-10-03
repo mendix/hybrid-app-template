@@ -84,6 +84,8 @@ function changeIOSPluginVersions() {
     const fileContent = readFileSync(location, "utf-8");
     const fileContentLines = fileContent.split("\n");
 
+    // Check the version of the file plugin: if it were updated. All the other plugins should have been updated.
+    // Therefore, checking only one plugin is good enough to use downgradeIOSPluginVersions or upgradePluginVersions functions.
     const filePluginObject = pluginsToBeChanged[0];
     const filePluginTag = fileContentLines.find((val) =>
       val.includes(`"${filePluginObject.name}"`)
