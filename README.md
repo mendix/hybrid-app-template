@@ -32,7 +32,7 @@ Make sure that the following is installed on your system:
 - A clone of this repository or the customizable package for your app, available in the 'Deploy'
   section of the Mendix Portal. When starting from a customizable package, basic configuration for
   your app has already been done.
-- Recent `Node.js`. This code was tested with version 18. You can check by running `node -v`.
+- Recent `Node.js`. This code was tested with version 20. You can check by running `node -v`.
     - Windows: install from [nodejs.org](https://nodejs.org/en/download/)
     - MacOS: use [Brew](https://brew.sh/) to install `Node.js`: `brew install node`
     - Linux, BSD, etc: install using the available package manager, e.g. on Debian: `sudo apt-get install node`
