@@ -1,6 +1,6 @@
 {
   "name": "@mendix/mendix-hybrid-app-template",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "Mendix hybrid app template",
   "scripts": {
     "init": "node init",
@@ -17,7 +17,7 @@
     "package:arm64": "npm run package -- --env.arm64",
     "package:watch": "npm run package -- --watch",
     "platform:all": "run-p platform:android platform:ios",
-    "platform:android": "cd build && cordova platform add android@12",
+    "platform:android": "cd build && cordova platform add android@13",
     "postplatform:android": "node ./scripts/fixAndroidManifest.js && node ./scripts/fixBarcodeScanner.js && node ./scripts/fixFileProvider.js",
     "platform:ios": "cd build && cordova platform add ios",
     "prepare:all": "npm run prepare:android && npm run prepare:ios",
@@ -44,7 +44,7 @@
     "scripts/*.js"
   ],
   "devDependencies": {
-    "@mendix/mendix-hybrid-app-base": "^8.0.0",
+    "@mendix/mendix-hybrid-app-base": "^9.0.0",
     "cordova": "^12.0.0",
     "global": "^4.4.0",
     "mustache-loader": "^1.4.3",
